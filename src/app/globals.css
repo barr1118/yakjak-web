@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --color-yak-bg: #FFFFFF;
+  --color-yak-lowest: #F1EBDA;
+  --color-yak-surface: #FFFFFF;
+  --color-yak-high: #E7E0CC;
+  --color-yak-input: #FFFFFF;
+  --color-yak-primary: #2F7D4F;
+  --color-yak-onprimary: #FFFFFF;
+  --color-yak-accent: #E05F14;
+  --color-yak-cream: #1F2A21;
+  --color-yak-muted: #5D6F61;
+  --color-yak-muted2: #66766A;
+  --color-yak-border: #D9D2BD;
+}
+
+html {
+  background: #f4f1e8;
+}
+
+body {
+  background: #f4f1e8;
+  color: #1F2A21;
+}
+
+::selection {
+  background: #2F7D4F;
+  color: #FFFFFF;
+}
+
+/* Visible keyboard focus that fits the theme.
+   Kept in the `base` layer so Tailwind utilities like
+   `focus-visible:outline-none` can opt elements out of it. */
+@layer base {
+  :focus-visible {
+    outline: 2px solid #2f7d4f;
+    outline-offset: 2px;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Horizontal scrollers (category chips, featured carousel):           */
+/* no visible scrollbar anywhere, but content still scrolls via        */
+/* touch swipe, mouse drag, or wheel/trackpad on hover.                */
+/* ------------------------------------------------------------------ */
+.scroll-x {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  touch-action: pan-x pan-y;
+}
+
+.scroll-x::-webkit-scrollbar {
+  display: none;
+}
+
+@media (hover: hover) {
+  .scroll-x {
+    cursor: grab;
+  }
+  .scroll-x.dragging {
+    cursor: grabbing;
+  }
+  /* avoid accidental text selection while drag-scrolling */
+  .scroll-x.dragging {
+    user-select: none;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Reveal-on-scroll                                                    */
+/* ------------------------------------------------------------------ */
+.reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-y, 18px));
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-shown {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Leaflet dark tweak so OSM tiles blend with the tactical theme */
+.leaflet-container {
+  font-family: inherit;
+}
