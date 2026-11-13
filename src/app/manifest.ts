@@ -2,16 +2,16 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "YAKJAK.ID — Hidden Natural Gems",
+    name: "YakJak — Ekoturisme Komunitas Aceh",
     short_name: "YakJak",
     description:
-      "Discover hidden natural destinations: routes, difficulty, travel time estimates, and trek maps.",
+      "Rute terverifikasi, peta offline, penyedia lokal, dan aturan adat untuk ekoturisme Aceh.",
     start_url: "/",
     scope: "/",
     display: "standalone",
     orientation: "portrait",
-    background_color: "#F4F1E8",
-    theme_color: "#2F7D4F",
+    background_color: "#F7F4EC",
+    theme_color: "#1F4D3A",
     lang: "id",
     icons: [
       {

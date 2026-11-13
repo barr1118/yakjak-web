@@ -10,6 +10,7 @@ import {
   type Unsubscribe,
 } from "firebase/firestore";
 import { db } from "./firebase";
+import { demo, getDemoState, subscribeDemo } from "./demo-store";
 
 export interface Review {
   id: string;
@@ -21,20 +22,48 @@ export interface Review {
   createdAt: Date | null;
 }
 
+function localReviews(placeSlug: string): Review[] {
+  return getDemoState()
+    .reviews.filter((r) => r.placeSlug === placeSlug && !r.hidden)
+    .map((r) => ({
+      ...r,
+      createdAt: r.createdAt ? new Date(r.createdAt) : null,
+    }));
+}
+
+function merge(local: Review[], remote: Review[]): Review[] {
+  const map = new Map<string, Review>();
+  for (const r of [...local, ...remote]) map.set(r.id, r);
+  return [...map.values()].sort(
+    (a, b) => (b.createdAt?.getTime() ?? 0) - (a.createdAt?.getTime() ?? 0),
+  );
+}
+
 /**
- * Community reviews. Collection `reviews` is world-readable; each doc is
- * writable only by its author (see firestore.rules). Documents reference
- * destinations via `placeSlug` so they survive catalog changes.
+ * Community reviews. The demo store always contributes seeded reviews;
+ * Firestore is merged in for real deployments. Demo accounts stay local.
  */
 export function subscribeReviews(
   placeSlug: string,
   onUpdate: (reviews: Review[]) => void,
+  opts?: { demo?: boolean },
 ): Unsubscribe {
+  if (opts?.demo) {
+    const push = () => onUpdate(localReviews(placeSlug));
+    push();
+    return subscribeDemo(push);
+  }
+
+  let remote: Review[] = [];
+  const push = () => onUpdate(merge(localReviews(placeSlug), remote));
+  push();
+  const unsubLocal = subscribeDemo(push);
+
   const q = query(collection(db, "reviews"), where("placeSlug", "==", placeSlug));
-  return onSnapshot(
+  const unsubRemote = onSnapshot(
     q,
     (snap) => {
-      const list: Review[] = snap.docs.map((d) => {
+      remote = snap.docs.map((d) => {
         const v = d.data() as Record<string, unknown>;
         const ts = v.createdAt as { toDate?: () => Date } | null;
         return {
@@ -48,14 +77,18 @@ export function subscribeReviews(
             ts && typeof ts.toDate === "function" ? ts.toDate() : null,
         };
       });
-      // Newest first (client-side to avoid a composite index).
-      list.sort(
-        (a, b) => (b.createdAt?.getTime() ?? 0) - (a.createdAt?.getTime() ?? 0),
-      );
-      onUpdate(list);
+      push();
     },
-    () => onUpdate([]),
+    () => {
+      remote = [];
+      push();
+    },
   );
+
+  return () => {
+    unsubLocal();
+    unsubRemote();
+  };
 }
 
 export async function addReview(input: {
@@ -65,6 +98,10 @@ export async function addReview(input: {
   rating: number;
   text: string;
 }): Promise<void> {
+  if (input.userId.startsWith("demo-")) {
+    demo.addReview(input);
+    return;
+  }
   await addDoc(collection(db, "reviews"), {
     placeSlug: input.placeSlug,
     userId: input.userId,
@@ -75,7 +112,14 @@ export async function addReview(input: {
   });
 }
 
-export async function deleteReview(reviewId: string): Promise<void> {
+export async function deleteReview(
+  reviewId: string,
+  userId?: string,
+): Promise<void> {
+  if (userId?.startsWith("demo-")) {
+    demo.deleteReview(reviewId);
+    return;
+  }
   await deleteDoc(doc(db, "reviews", reviewId));
 }
 

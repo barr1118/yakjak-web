@@ -31,19 +31,37 @@ export default function WeatherCard({
 
   useEffect(() => {
     let cancelled = false;
+    const timeout = setTimeout(() => {
+      if (!cancelled) setFailed(true);
+    }, 9000);
     fetchWeather(lat, lng)
       .then((w) => {
-        if (!cancelled) setData(w);
+        if (!cancelled) {
+          clearTimeout(timeout);
+          setData(w);
+        }
       })
       .catch(() => {
-        if (!cancelled) setFailed(true);
+        if (!cancelled) {
+          clearTimeout(timeout);
+          setFailed(true);
+        }
       });
     return () => {
       cancelled = true;
+      clearTimeout(timeout);
     };
   }, [lat, lng]);
 
-  if (failed) return null;
+  if (failed) {
+    return (
+      <div className="rounded-2xl border border-[#DED7C4] bg-white px-4 py-3 text-[11px] text-[#5D6F61]">
+        {lang === "id"
+          ? "Data cuaca belum tersedia. Cek lagi saat online."
+          : "Weather data is not available. Check again when online."}
+      </div>
+    );
+  }
 
   if (!data) {
     return (

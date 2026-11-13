@@ -14,22 +14,54 @@ export function DifficultyBadge({
   difficulty: Place["difficulty"];
   lang: Lang;
 }) {
-  const hard = difficulty === "Hard";
+  const tone =
+    difficulty === "Hard"
+      ? "bg-[#B42318] text-white"
+      : difficulty === "Moderate"
+        ? "bg-[#B54708] text-white"
+        : "bg-[#1F4D3A] text-white";
   return (
     <span
-      className={`rounded-md px-2 py-1 text-[10px] font-extrabold uppercase tracking-wide ${
-        hard ? "bg-[#B42318] text-white" : "bg-[#2F7D4F] text-white"
-      }`}
+      className={`rounded-full px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.12em] ${tone}`}
     >
       {t(lang, difficulty).toUpperCase()}
     </span>
   );
 }
 
+export function VerifiedBadge({
+  verified,
+  lang,
+  compact = false,
+}: {
+  verified?: boolean;
+  lang: Lang;
+  compact?: boolean;
+}) {
+  return (
+    <span
+      className={`inline-flex items-center gap-1 rounded-full border px-2 py-1 text-[9px] font-extrabold uppercase tracking-[0.1em] backdrop-blur-sm ${
+        verified
+          ? "border-white/30 bg-[#1F4D3A]/85 text-white"
+          : "border-[#B54708]/30 bg-[#FDF0E3]/95 text-[#B54708]"
+      }`}
+    >
+      <span className="text-[10px]">{verified ? "✓" : "•"}</span>
+      {compact
+        ? verified
+          ? t(lang, "verified")
+          : t(lang, "data_awal")
+        : verified
+          ? t(lang, "verified")
+          : t(lang, "unverified")}
+    </span>
+  );
+}
+
 export function RatingBadge({ rating }: { rating: number }) {
   return (
-    <span className="flex items-center gap-1 rounded border border-white/25 bg-black/55 px-2 py-1 text-[10px] font-extrabold text-white backdrop-blur-sm">
-      <span className="text-white">★</span> {rating.toFixed(1)}
+    <span className="flex items-center gap-1 rounded-full border border-white/25 bg-black/45 px-2 py-1 text-[10px] font-extrabold text-white backdrop-blur-sm">
+      <span className="text-[#F7D27A]">★</span> {rating.toFixed(1)}
     </span>
   );
 }
@@ -61,8 +93,8 @@ export function FavoriteButton({
         }
         onToggle(placeName);
       }}
-      className={`flex ${cls} items-center justify-center rounded-full bg-[#FFFFFF]/60 transition-transform hover:scale-110 ${
-        isFavorite ? "text-[#E05F14]" : "text-[#1F2A21]"
+      className={`flex ${cls} items-center justify-center rounded-full bg-white/80 shadow-sm backdrop-blur transition-transform hover:scale-110 ${
+        isFavorite ? "text-[#C2410C]" : "text-[#1F2A21]"
       }`}
     >
       {isFavorite ? "♥" : "♡"}
@@ -70,7 +102,6 @@ export function FavoriteButton({
   );
 }
 
-/** Mirrors FeaturedPlaceCard (horizontal 240px hero card) */
 export function FeaturedCard({
   place,
   lang,
@@ -87,39 +118,51 @@ export function FeaturedCard({
   return (
     <Link
       href={`/place/${place.slug}`}
-      className="group relative h-80 w-60 shrink-0 overflow-hidden rounded-xl border border-[#D9D2BD] bg-[#FFFFFF] shadow-md sm:h-[320px] sm:w-60"
+      className="group relative block h-[360px] w-[270px] shrink-0 overflow-hidden rounded-3xl border border-[#DED7C4] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:h-[390px]"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={place.image}
         alt={place.name}
         draggable={false}
-        className="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+        className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
-      <div className="absolute right-2 top-2">
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F17]/90 via-[#0B1F17]/25 to-transparent" />
+      <div className="absolute left-3 top-3">
+        <VerifiedBadge verified={place.verified} lang={lang} compact />
+      </div>
+      <div className="absolute right-3 top-3 flex items-center gap-1.5">
+        <RatingBadge rating={place.rating} />
         <FavoriteButton
           placeName={place.name}
           isFavorite={isFavorite}
           onToggle={onToggle}
           onRequireLogin={onRequireLogin}
+          size="sm"
         />
       </div>
       <div className="absolute inset-x-0 bottom-0 p-4">
-        <div className="flex items-center gap-2">
-          <DifficultyBadge difficulty={place.difficulty} lang={lang} />
-          <RatingBadge rating={place.rating} />
+        <div className="flex items-center gap-2 text-[9px] font-extrabold uppercase tracking-[0.16em] text-white/70">
+          <span>{t(lang, place.category)}</span>
+          <span className="h-0.5 w-0.5 rounded-full bg-white/50" />
+          <span>{place.region}</span>
         </div>
-        <h3 className="mt-2 text-xl font-extrabold text-white">{place.name}</h3>
-        <p className="mt-1 line-clamp-2 text-sm text-white/80">
+        <h3 className="mt-1.5 font-[family-name:var(--font-fraunces)] text-[26px] font-semibold leading-tight text-white">
+          {place.name}
+        </h3>
+        <p className="mt-1 line-clamp-2 text-[11px] leading-relaxed text-white/75">
           {t(lang, place.descriptionKey)}
         </p>
+        <div className="mt-3 flex items-center gap-3 border-t border-white/15 pt-2.5 text-[10px] font-bold text-white/80">
+          <DifficultyBadge difficulty={place.difficulty} lang={lang} />
+          <span>{place.distance} km</span>
+          <span>{place.estTime}</span>
+        </div>
       </div>
     </Link>
   );
 }
 
-/** Mirrors NearbyPlaceCard (horizontal list row) */
 export function NearbyCard({
   place,
   lang,
@@ -136,17 +179,20 @@ export function NearbyCard({
   return (
     <Link
       href={`/place/${place.slug}`}
-      className="flex h-[120px] overflow-hidden rounded-xl border border-[#D9D2BD] bg-[#FFFFFF] shadow-sm transition-all hover:border-[#2F7D4F] hover:shadow-md"
+      className="group flex overflow-hidden rounded-2xl border border-[#DED7C4] bg-white shadow-sm transition-all hover:border-[#2F7D4F]/50 hover:shadow-md"
     >
-      <div className="relative w-[120px] shrink-0">
+      <div className="relative w-[132px] shrink-0 sm:w-[150px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={place.image}
           alt={place.name}
           draggable={false}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="absolute left-1 top-1">
+        <div className="absolute left-2 top-2">
+          <VerifiedBadge verified={place.verified} lang={lang} compact />
+        </div>
+        <div className="absolute bottom-2 left-2">
           <FavoriteButton
             placeName={place.name}
             isFavorite={isFavorite}
@@ -156,21 +202,31 @@ export function NearbyCard({
           />
         </div>
       </div>
-      <div className="w-px bg-[#D9D2BD]" />
-      <div className="flex min-w-0 flex-1 flex-col justify-between p-4">
+      <div className="flex min-w-0 flex-1 flex-col justify-between p-3.5">
         <div>
           <div className="flex items-start justify-between gap-2">
-            <h3 className="truncate text-lg font-extrabold text-[#1F2A21]">{place.name}</h3>
-            <span className="flex shrink-0 items-center gap-1 rounded border border-[#2F7D4F] bg-[#E2EFE0] px-1.5 py-0.5 text-[10px] font-extrabold text-[#2F7D4F]">
-              🗺 {place.distance} {t(lang, "unit_km")}
+            <h3 className="truncate font-[family-name:var(--font-fraunces)] text-lg font-semibold text-[#1F2A21]">
+              {place.name}
+            </h3>
+            <span className="flex shrink-0 items-center gap-1 text-[10px] font-extrabold text-[#5D6F61]">
+              <span className="text-[#F0A11A]">★</span>
+              {place.rating.toFixed(1)}
             </span>
           </div>
-          <p className="mt-0.5 text-xs text-[#66766A]">{t(lang, place.category)}</p>
+          <p className="mt-0.5 text-[11px] font-semibold text-[#5D6F61]">
+            {place.region} · {t(lang, place.category)}
+          </p>
         </div>
-        <div>
-          <span className="rounded border border-[#D9D2BD] bg-[#E7E0CC] px-2 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#1F2A21]">
-            {t(lang, place.difficulty).toUpperCase()}
+        <div className="mt-2 flex flex-wrap items-center gap-1.5">
+          <DifficultyBadge difficulty={place.difficulty} lang={lang} />
+          <span className="rounded-full bg-[#F1EBDA] px-2 py-1 text-[9px] font-bold text-[#5D6F61]">
+            {place.distance} km · {place.estTime}
           </span>
+          {place.adat?.permitRequired && (
+            <span className="rounded-full border border-[#E7C9A0] bg-[#FDF0E3] px-2 py-1 text-[9px] font-bold text-[#B54708]">
+              {t(lang, "permit_required")}
+            </span>
+          )}
         </div>
       </div>
     </Link>

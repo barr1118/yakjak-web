@@ -1,21 +1,11 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-  type ReactNode,
-} from "react";
-import {
-  fetchPlacesFromFirestore,
-  places as localPlaces,
-} from "./places";
+import { createContext, useContext, type ReactNode } from "react";
+import { places as localPlaces } from "./places";
 import type { Place } from "./types";
 
 interface PlacesCtx {
-  /** Firestore list when available, otherwise the local fallback. */
+  /** Curated local catalogue (the demo/deployment source of truth). */
   allPlaces: Place[];
   source: "local" | "firestore";
   loading: boolean;
@@ -24,39 +14,20 @@ interface PlacesCtx {
 const Ctx = createContext<PlacesCtx>({
   allPlaces: localPlaces,
   source: "local",
-  loading: true,
+  loading: false,
 });
 
+/**
+ * YakJak 2.0 keeps destinations in the curated local catalogue so the
+ * verification badges, adat rules and safety notes are always consistent.
+ * Firestore stays for per-user data (favorites, reviews, history).
+ */
 export function PlacesProvider({ children }: { children: ReactNode }) {
-  const [remote, setRemote] = useState<Place[] | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let cancelled = false;
-    fetchPlacesFromFirestore().then(
-      (list) => {
-        if (cancelled) return;
-        if (list.length > 0) setRemote(list);
-        setLoading(false);
-      },
-      () => {
-        if (!cancelled) setLoading(false);
-      },
-    );
-    return () => {
-      cancelled = true;
-    };
-  }, []);
-
-  const value = useMemo<PlacesCtx>(
-    () => ({
-      allPlaces: remote ?? localPlaces,
-      source: remote ? "firestore" : "local",
-      loading,
-    }),
-    [remote, loading],
+  return (
+    <Ctx.Provider value={{ allPlaces: localPlaces, source: "local", loading: false }}>
+      {children}
+    </Ctx.Provider>
   );
-  return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }
 
 export function usePlaces() {

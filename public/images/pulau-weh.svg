@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="Pulau Weh">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8FD0DA"/>
+      <stop offset="1" stop-color="#DDF3F1"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2C8C9E"/>
+      <stop offset="1" stop-color="#166D82"/>
+    </linearGradient>
+    <linearGradient id="land" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E6D6A8"/>
+      <stop offset="1" stop-color="#BFA878"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#FFF4D6" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#FFF4D6" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="900" height="620" fill="url(#sky)"/>
+  <circle cx="690" cy="140" r="120" fill="url(#sun)"/>
+  <path d="M0 390 H900 V620 H0 Z" fill="url(#water)"/>
+  <path d="M120 390 q80 -150 220 -150 q140 0 190 150 Z" fill="#3D6B4F"/>
+  <path d="M300 390 q70 -100 160 -100 q90 0 130 100 Z" fill="#2A523C"/>
+  <path d="M0 470 Q220 450 450 474 T900 460" stroke="#DDF3F1" stroke-width="4" fill="none" opacity="0.55"/>
+  <path d="M620 500 l90 -28 l-8 22 l-78 16 Z" fill="#F4E6BE"/>
+  <path d="M650 478 l4 -40 l6 40 Z" fill="#F4E6BE"/>
+  <path d="M120 540 Q260 515 420 542 T760 530" stroke="#DDF3F1" stroke-width="3" fill="none" opacity="0.4"/>
+  <rect x="0" y="0" width="900" height="620" fill="#0B1F17" opacity="0.12"/>
+  <rect x="0" y="400" width="900" height="220" fill="#0B1F17" opacity="0.22"/>
+</svg>

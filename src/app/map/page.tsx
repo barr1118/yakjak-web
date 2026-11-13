@@ -26,7 +26,12 @@ export default function MapPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-extrabold">{t(lang, "map_title")}</h1>
+      <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#B54708]">
+        {t(lang, "nav_map")}
+      </p>
+      <h1 className="mt-1.5 font-[family-name:var(--font-fraunces)] text-4xl font-semibold tracking-tight text-[#1F2A21]">
+        {t(lang, "map_title")}
+      </h1>
       <p className="mt-1 text-sm text-[#5D6F61]">{t(lang, "map_subtitle")}</p>
 
       <div className="mt-4">
@@ -40,7 +45,7 @@ export default function MapPage() {
         />
       </div>
 
-      <h2 className="mt-8 text-xl font-extrabold">
+      <h2 className="mt-8 font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#1F2A21]">
         {t(lang, "all_places")} ({places.length})
       </h2>
       <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">

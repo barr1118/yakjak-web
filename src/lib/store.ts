@@ -11,31 +11,36 @@ import {
 } from "firebase/firestore";
 import { db } from "./firebase";
 import { useAuth } from "./auth";
+import { demo, useDemoState } from "./demo-store";
 
 /**
- * Mirrors FirestoreService from yakjak_app/lib/services/firestore_service.dart:
- * users/{uid}/favorites/{placeName} -> { addedAt }
+ * Favorites: Firestore for real accounts, demo store for demo accounts.
+ * Keep the same signature used across the app.
  */
 export function useFavorites() {
   const { user } = useAuth();
-  const [favorites, setFavorites] = useState<Set<string>>(new Set());
+  const demoState = useDemoState();
+  const [remote, setRemote] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    if (!user) return;
+    if (!user || user.isDemo) return;
     const ref = collection(db, "users", user.uid, "favorites");
     const unsub = onSnapshot(ref, (snap) => {
-      setFavorites(new Set(snap.docs.map((d) => d.id)));
+      setRemote(new Set(snap.docs.map((d) => d.id)));
     });
     return () => {
       unsub();
-      // clear stale favorites when switching accounts / logging out
-      setFavorites(new Set());
+      setRemote(new Set());
     };
   }, [user]);
 
   const toggleFavorite = useCallback(
     async (placeName: string, isCurrentlyFavorite: boolean) => {
       if (!user) return;
+      if (user.isDemo) {
+        demo.toggleFavorite(placeName);
+        return;
+      }
       const ref = doc(db, "users", user.uid, "favorites", placeName);
       if (isCurrentlyFavorite) {
         await deleteDoc(ref);
@@ -46,52 +51,22 @@ export function useFavorites() {
     [user],
   );
 
+  const favorites = user?.isDemo
+    ? new Set(demoState.favorites)
+    : remote;
+
   return { favorites, toggleFavorite };
 }
 
-// ---------------------------------------------------------------------------
-// "Offline downloads" for web: the mobile app plans to download map tiles to
-// local storage. On web we persist the place snapshot in localStorage instead.
-// ---------------------------------------------------------------------------
-
-const OFFLINE_KEY = "yakjak-offline";
-
-function readOffline(): string[] {
-  try {
-    const raw = window.localStorage.getItem(OFFLINE_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed.filter((x) => typeof x === "string") : [];
-  } catch {
-    return [];
-  }
-}
-
+/**
+ * Offline Trip Packs. The pack metadata lives in the demo store and is shared
+ * by guests, demo users and real accounts; the bytes are cached by the
+ * download helper in lib/trip-pack.ts.
+ */
 export function useOfflineDownloads() {
-  // Start empty to match SSR; hydrate from localStorage after mount.
-  const [downloaded, setDownloaded] = useState<string[]>([]);
-
-  useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setDownloaded(readOffline());
-    const onStorage = (e: StorageEvent) => {
-      if (e.key === OFFLINE_KEY) setDownloaded(readOffline());
-    };
-    window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
-  }, []);
-
+  const demoState = useDemoState();
   const toggleDownload = useCallback((slug: string) => {
-    const current = new Set(readOffline());
-    if (current.has(slug)) {
-      current.delete(slug);
-    } else {
-      current.add(slug);
-    }
-    const next = [...current];
-    window.localStorage.setItem(OFFLINE_KEY, JSON.stringify(next));
-    setDownloaded(next);
+    demo.togglePack(slug);
   }, []);
-
-  return { downloaded, toggleDownload };
+  return { downloaded: demoState.packs, toggleDownload };
 }

@@ -57,9 +57,11 @@ export default function Reviews({
   const [loginOpen, setLoginOpen] = useState(false);
 
   useEffect(() => {
-    const unsub = subscribeReviews(placeSlug, setReviews);
+    const unsub = subscribeReviews(placeSlug, setReviews, {
+      demo: user?.isDemo ?? false,
+    });
     return () => unsub();
-  }, [placeSlug]);
+  }, [placeSlug, user?.isDemo]);
 
   const avg = averageRating(reviews);
 
@@ -149,7 +151,7 @@ export default function Reviews({
               </div>
               {user?.uid === r.userId && (
                 <button
-                  onClick={() => deleteReview(r.id)}
+                  onClick={() => deleteReview(r.id, user?.uid)}
                   className="text-xs font-bold text-[#5D6F61] hover:text-[#B42318]"
                 >
                   {t(lang, "review_delete")}

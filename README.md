@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# YakJak — Ekoturisme Komunitas Aceh
 
-## Getting Started
+Web MVP untuk tugas **Sektor Unggulan Digital Entrepreneurship (Sektor 9: Pariwisata, Kebudayaan & Ekoturisme)**. YakJak menghubungkan traveler dengan rute terverifikasi, penyedia lokal, aturan adat, dan Trip Pack offline di Aceh.
 
-First, run the development server:
+## Jalankan lokal
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Demo tanpa daftar
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Klik **Coba demo** di navbar, lalu pilih salah satu peran:
 
-## Learn More
+| Peran | Yang bisa dicoba |
+| --- | --- |
+| Demo traveler | Favorit, booking request, unduh Trip Pack, isi ulasan & laporan jalur |
+| Demo provider | Lihat permintaan masuk, konfirmasi/tolak booking, cek listing |
+| Demo admin | Verifikasi penyedia baru, pantau destinasi & laporan jalur |
 
-To learn more about Next.js, take a look at the following resources:
+Data demo disimpan di `localStorage` browser (`yakjak-demo-v2`). Tombol **Reset data demo** ada di halaman Profil.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Fitur MVP
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 8 destinasi Aceh, 3 di antaranya bertanda **terverifikasi lapangan**; sisanya **data awal**.
+- 8 penyedia lokal (guide, homestay, kuliner, kerajinan, perahu) dengan halaman profil dan layanan.
+- Booking request tanpa payment gateway — penyedia mengonfirmasi, traveler membayar langsung.
+- Trip Pack offline: foto, kontak, aturan adat, dan blok peta 5×5 tile disimpan via Cache API.
+- Detail destinasi: tingkat kesulitan, musim terbaik, cuaca Open-Meteo, peta jalur, adat (Panglima Laot/gampong), keselamatan, penyedia, ulasan, laporan jalur.
+- Mode ekspedisi GPS dengan filter akurasi dan penyimpanan riwayat.
+- Dashboard penyedia dan admin verifikasi.
+- Bilingual ID/EN, PWA (manifest + service worker), responsif mobile/desktop.
 
-## Deploy on Vercel
+## Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Next.js 16 (App Router) · React 19 · Tailwind 4 · Leaflet · Firebase Auth/Firestore (opsional; data inti berjalan lokal) · TypeScript.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Catatan data
+
+Katalog destinasi, penyedia, dan layanan berada di `src/lib/places.ts` dan `src/lib/seed.ts` sebagai **data pilot**. Angka finansial di PRD adalah asumsi yang perlu divalidasi. Harga dan kontak penyedia adalah contoh untuk demo, bukan penawaran komersial.
+
+## Verifikasi
+
+```bash
+npx tsc --noEmit
+npm run lint
+npm run build
+```

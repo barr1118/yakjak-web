@@ -1,37 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  --color-yak-bg: #FFFFFF;
-  --color-yak-lowest: #F1EBDA;
-  --color-yak-surface: #FFFFFF;
-  --color-yak-high: #E7E0CC;
-  --color-yak-input: #FFFFFF;
-  --color-yak-primary: #2F7D4F;
-  --color-yak-onprimary: #FFFFFF;
-  --color-yak-accent: #E05F14;
-  --color-yak-cream: #1F2A21;
-  --color-yak-muted: #5D6F61;
-  --color-yak-muted2: #66766A;
-  --color-yak-border: #D9D2BD;
+  --color-yak-bg: #f7f4ec;
+  --color-yak-lowest: #f1ebda;
+  --color-yak-surface: #ffffff;
+  --color-yak-high: #e7e0cc;
+  --color-yak-input: #ffffff;
+  --color-yak-primary: #1f4d3a;
+  --color-yak-onprimary: #ffffff;
+  --color-yak-accent: #b54708;
+  --color-yak-cream: #1f2a21;
+  --color-yak-muted: #5d6f61;
+  --color-yak-muted2: #66766a;
+  --color-yak-border: #ded7c4;
+  --color-yak-sage: #e3ecd9;
+  --color-yak-sand: #d9c68a;
 }
 
 html {
-  background: #f4f1e8;
+  background: #f7f4ec;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: #f4f1e8;
-  color: #1F2A21;
+  background: #f7f4ec;
+  color: #1f2a21;
 }
 
 ::selection {
-  background: #2F7D4F;
-  color: #FFFFFF;
+  background: #1f4d3a;
+  color: #ffffff;
 }
 
-/* Visible keyboard focus that fits the theme.
-   Kept in the `base` layer so Tailwind utilities like
-   `focus-visible:outline-none` can opt elements out of it. */
 @layer base {
   :focus-visible {
     outline: 2px solid #2f7d4f;
@@ -39,11 +39,7 @@ body {
   }
 }
 
-/* ------------------------------------------------------------------ */
-/* Horizontal scrollers (category chips, featured carousel):           */
-/* no visible scrollbar anywhere, but content still scrolls via        */
-/* touch swipe, mouse drag, or wheel/trackpad on hover.                */
-/* ------------------------------------------------------------------ */
+/* Horizontal scrollers: no visible scrollbar, still swipeable. */
 .scroll-x {
   overflow-x: auto;
   overflow-y: hidden;
@@ -64,16 +60,11 @@ body {
   }
   .scroll-x.dragging {
     cursor: grabbing;
-  }
-  /* avoid accidental text selection while drag-scrolling */
-  .scroll-x.dragging {
     user-select: none;
   }
 }
 
-/* ------------------------------------------------------------------ */
-/* Reveal-on-scroll                                                    */
-/* ------------------------------------------------------------------ */
+/* Reveal-on-scroll */
 .reveal {
   opacity: 0;
   transform: translateY(var(--reveal-y, 18px));
@@ -89,6 +80,9 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   .reveal {
     opacity: 1;
     transform: none;
@@ -96,7 +90,12 @@ body {
   }
 }
 
-/* Leaflet dark tweak so OSM tiles blend with the tactical theme */
+/* Leaflet */
 .leaflet-container {
   font-family: inherit;
+  background: #e8efe4;
+}
+
+.leaflet-control-attribution {
+  font-size: 9px !important;
 }

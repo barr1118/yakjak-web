@@ -16,14 +16,14 @@ interface LanguageCtx {
   setLang: (l: Lang) => void;
 }
 
-const Ctx = createContext<LanguageCtx>({ lang: "en", setLang: () => {} });
+const Ctx = createContext<LanguageCtx>({ lang: "id", setLang: () => {} });
 
 const KEY = "yakjak-lang";
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  // Always start with "en" so the first client render matches the SSR HTML.
-  // The saved preference is applied right after mount (no hydration mismatch).
-  const [lang, setLangState] = useState<Lang>("en");
+  // Start in Indonesian so the first render matches the SSR HTML. The saved
+  // preference (EN/ID) is applied right after mount.
+  const [lang, setLangState] = useState<Lang>("id");
 
   useEffect(() => {
     const saved = window.localStorage.getItem(KEY);

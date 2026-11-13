@@ -1,9 +1,12 @@
 import type { Place } from "./types";
 
 /**
- * Ported 1:1 from yakjak_app/lib/data/mock_data.dart.
- * Image paths point to /public/images (renamed to kebab-case, no spaces).
- * Used as the offline fallback when Firestore is unreachable/empty.
+ * Pilot catalog for YakJak 2.0.
+ *
+ * The first three destinations come from the original Flutter mock data and
+ * have been field-checked. The rest are real Aceh destinations with
+ * approximate coordinates and tracks for the MVP demo — marked
+ * `verified: false` until the field team checks them.
  */
 export const places: Place[] = [
   {
@@ -25,6 +28,30 @@ export const places: Place[] = [
     estTime: "0:26 min",
     elevationGain: 132,
     rating: 4.8,
+    region: "Aceh Besar",
+    bestSeason: "Apr–Sep",
+    verified: true,
+    lastFieldCheck: "2026-11-02",
+    adat: {
+      authority: "Panglima Laot setempat",
+      permitRequired: false,
+      rules: [
+        "Jangan meninggalkan sampah plastik.",
+        "Hormati warga gampong dan area yang ditandai.",
+        "Dilarang memetik tanaman atau menangkap biota.",
+      ],
+      calendarNote:
+        "Cek kalender Panglima Laot sebelum aktivitas perahu. Aturan resmi menyusul setelah MoU.",
+    },
+    safety: {
+      contacts: [
+        { label: "Darurat nasional", phone: "112" },
+        { label: "SAR (BASARNAS)", phone: "115" },
+        { label: "Layanan kesehatan", phone: "119" },
+      ],
+      hazards: ["Jalur licin saat hujan", "Sinyal seluler lemah"],
+      signal: "Lemah",
+    },
   },
   {
     name: "Goh Leumoe",
@@ -45,6 +72,30 @@ export const places: Place[] = [
     estTime: "8:45 hrs",
     elevationGain: 1250,
     rating: 4.5,
+    region: "Aceh Besar",
+    bestSeason: "Jun–Sep",
+    verified: true,
+    lastFieldCheck: "2026-10-26",
+    adat: {
+      authority: "Gampong / Mukim setempat",
+      permitRequired: true,
+      rules: [
+        "Lapor ke perangkat gampong sebelum pendakian.",
+        "Gunakan pemandu lokal untuk jalur yang belum ditandai.",
+        "Bawa kembali seluruh sampah.",
+      ],
+      calendarNote:
+        "Izin dan aturan jalur dapat berubah; konfirmasi ke gampong sebelum berangkat.",
+    },
+    safety: {
+      contacts: [
+        { label: "Darurat nasional", phone: "112" },
+        { label: "SAR (BASARNAS)", phone: "115" },
+        { label: "Layanan kesehatan", phone: "119" },
+      ],
+      hazards: ["Jalur terjal", "Sinyal sangat terbatas", "Kabut tebal"],
+      signal: "Tidak stabil",
+    },
   },
   {
     name: "Lhok Keutapang",
@@ -65,6 +116,241 @@ export const places: Place[] = [
     estTime: "6:30 hrs",
     elevationGain: 850,
     rating: 4.9,
+    region: "Aceh Besar",
+    bestSeason: "Mar–Sep",
+    verified: true,
+    lastFieldCheck: "2026-10-26",
+    adat: {
+      authority: "Panglima Laot setempat",
+      permitRequired: true,
+      rules: [
+        "Hormati hari pantang dan aturan Panglima Laot.",
+        "Jangan merusak terumbu atau mengambil biota laut.",
+        "Gunakan jalur yang disepakati warga.",
+      ],
+      calendarNote:
+        "Kalender hari pantang wajib divalidasi dengan Panglima Laot sebelum rilis publik.",
+    },
+    safety: {
+      contacts: [
+        { label: "Darurat nasional", phone: "112" },
+        { label: "SAR (BASARNAS)", phone: "115" },
+        { label: "Layanan kesehatan", phone: "119" },
+      ],
+      hazards: ["Batu licin", "Arus laut kuat", "Sinyal lemah"],
+      signal: "Lemah",
+    },
+  },
+  {
+    name: "Pantai Lampuuk",
+    slug: "pantai-lampuuk",
+    image: "/images/pantai-lampuuk.svg",
+    descriptionKey: "desc_pantai_lampuuk",
+    lat: 5.4833,
+    lng: 95.2333,
+    track: [
+      [5.481, 95.231],
+      [5.482, 95.232],
+      [5.483, 95.233],
+      [5.4833, 95.2333],
+    ],
+    difficulty: "Easy",
+    category: "Beach",
+    distance: 1.2,
+    estTime: "0:20 min",
+    elevationGain: 15,
+    rating: 4.7,
+    region: "Aceh Besar",
+    bestSeason: "Apr–Sep",
+    verified: false,
+    adat: {
+      authority: "Panglima Laot setempat",
+      permitRequired: false,
+      rules: [
+        "Patuhi batas area berenang.",
+        "Jangan meninggalkan sampah.",
+        "Hormati warga dan aktivitas nelayan.",
+      ],
+      calendarNote: "Data adat awal — perlu validasi lapangan.",
+    },
+    safety: {
+      contacts: [
+        { label: "Darurat nasional", phone: "112" },
+        { label: "SAR (BASARNAS)", phone: "115" },
+        { label: "Layanan kesehatan", phone: "119" },
+      ],
+      hazards: ["Arus balik", "Matahari terik", "Sinyal baik"],
+      signal: "Baik",
+    },
+  },
+  {
+    name: "Air Terjun Suhom",
+    slug: "air-terjun-suhom",
+    image: "/images/air-terjun-suhom.svg",
+    descriptionKey: "desc_air_terjun_suhom",
+    lat: 5.483,
+    lng: 95.283,
+    track: [
+      [5.479, 95.28],
+      [5.48, 95.281],
+      [5.482, 95.282],
+      [5.483, 95.283],
+    ],
+    difficulty: "Moderate",
+    category: "Waterfall",
+    distance: 2.4,
+    estTime: "1:10 hrs",
+    elevationGain: 180,
+    rating: 4.6,
+    region: "Aceh Besar",
+    bestSeason: "Nov–Mar",
+    verified: false,
+    adat: {
+      authority: "Gampong / Mukim setempat",
+      permitRequired: false,
+      rules: [
+        "Jaga kebersihan area air terjun.",
+        "Dilarang memetik tanaman atau menangkap hewan.",
+        "Gunakan alas kaki anti-slip.",
+      ],
+      calendarNote: "Data adat awal — perlu validasi lapangan.",
+    },
+    safety: {
+      contacts: [
+        { label: "Darurat nasional", phone: "112" },
+        { label: "SAR (BASARNAS)", phone: "115" },
+        { label: "Layanan kesehatan", phone: "119" },
+      ],
+      hazards: ["Batu licin", "Debit air naik saat hujan", "Sinyal terbatas"],
+      signal: "Terbatas",
+    },
+  },
+  {
+    name: "Danau Laut Tawar",
+    slug: "danau-laut-tawar",
+    image: "/images/danau-laut-tawar.svg",
+    descriptionKey: "desc_danau_laut_tawar",
+    lat: 4.6167,
+    lng: 96.8333,
+    track: [
+      [4.61, 96.83],
+      [4.613, 96.831],
+      [4.615, 96.832],
+      [4.6167, 96.8333],
+    ],
+    difficulty: "Easy",
+    category: "Lake",
+    distance: 3.5,
+    estTime: "1:30 hrs",
+    elevationGain: 60,
+    rating: 4.8,
+    region: "Aceh Tengah",
+    bestSeason: "Apr–Sep",
+    verified: false,
+    adat: {
+      authority: "Gampong / Mukim setempat",
+      permitRequired: false,
+      rules: [
+        "Jangan mencemari danau.",
+        "Hormati area nelayan dan kebun warga.",
+        "Bawa kembali sampah.",
+      ],
+      calendarNote: "Data adat awal — perlu validasi lapangan.",
+    },
+    safety: {
+      contacts: [
+        { label: "Darurat nasional", phone: "112" },
+        { label: "SAR (BASARNAS)", phone: "115" },
+        { label: "Layanan kesehatan", phone: "119" },
+      ],
+      hazards: ["Suhu malam dingin", "Kabut pagi", "Sinyal baik"],
+      signal: "Baik",
+    },
+  },
+  {
+    name: "Pulau Weh",
+    slug: "pulau-weh",
+    image: "/images/pulau-weh.svg",
+    descriptionKey: "desc_pulau_weh",
+    lat: 5.8833,
+    lng: 95.3167,
+    track: [
+      [5.879, 95.313],
+      [5.88, 95.314],
+      [5.882, 95.315],
+      [5.8833, 95.3167],
+    ],
+    difficulty: "Moderate",
+    category: "Island",
+    distance: 6.2,
+    estTime: "3:00 hrs",
+    elevationGain: 320,
+    rating: 4.9,
+    region: "Sabang",
+    bestSeason: "Mar–Sep",
+    verified: false,
+    adat: {
+      authority: "Panglima Laot setempat",
+      permitRequired: true,
+      rules: [
+        "Patuhi aturan kawasan konservasi laut.",
+        "Jangan menyentuh terumbu karang.",
+        "Gunakan operator perahu yang terdaftar.",
+      ],
+      calendarNote:
+        "Data adat awal — perlu koordinasi dengan Panglima Laot dan pengelola kawasan.",
+    },
+    safety: {
+      contacts: [
+        { label: "Darurat nasional", phone: "112" },
+        { label: "SAR (BASARNAS)", phone: "115" },
+        { label: "Layanan kesehatan", phone: "119" },
+      ],
+      hazards: ["Arus laut", "Cuaca cepat berubah", "Sinyal tidak stabil di laut"],
+      signal: "Tidak stabil",
+    },
+  },
+  {
+    name: "Burni Telong",
+    slug: "burni-telong",
+    image: "/images/burni-telong.svg",
+    descriptionKey: "desc_burni_telong",
+    lat: 4.7667,
+    lng: 96.8167,
+    track: [
+      [4.762, 96.813],
+      [4.764, 96.814],
+      [4.766, 96.815],
+      [4.7667, 96.8167],
+    ],
+    difficulty: "Hard",
+    category: "Mountain",
+    distance: 11.8,
+    estTime: "7:00 hrs",
+    elevationGain: 1400,
+    rating: 4.7,
+    region: "Bener Meriah",
+    bestSeason: "Jun–Sep",
+    verified: false,
+    adat: {
+      authority: "Gampong / Mukim setempat",
+      permitRequired: true,
+      rules: [
+        "Lapor ke pengelola jalur sebelum mendaki.",
+        "Gunakan pemandu lokal.",
+        "Jangan meninggalkan sampah.",
+      ],
+      calendarNote: "Data adat awal — perlu validasi lapangan.",
+    },
+    safety: {
+      contacts: [
+        { label: "Darurat nasional", phone: "112" },
+        { label: "SAR (BASARNAS)", phone: "115" },
+        { label: "Layanan kesehatan", phone: "119" },
+      ],
+      hazards: ["Jalur panjang", "Suhu dingin", "Sinyal terbatas"],
+      signal: "Terbatas",
+    },
   },
 ];
 
@@ -131,6 +417,14 @@ export function placeFromDoc(
       estTime: String(data.estTime ?? "-"),
       elevationGain: Number(data.elevationGain ?? 0),
       rating: Number(data.rating ?? 0),
+      region: typeof data.region === "string" ? data.region : undefined,
+      bestSeason:
+        typeof data.bestSeason === "string" ? data.bestSeason : undefined,
+      verified: typeof data.verified === "boolean" ? data.verified : undefined,
+      lastFieldCheck:
+        typeof data.lastFieldCheck === "string"
+          ? data.lastFieldCheck
+          : undefined,
     };
   } catch {
     return null;

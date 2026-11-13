@@ -1,52 +1,46 @@
-/* Minimal YakJak service worker (no build plugins needed).
+/* Minimal YakJak service worker (plain JS — no build step).
  *
  * - Offline shell: precaches "/" so the app opens without signal.
- * - Map tiles + local images: cache-first with a cap, so downloaded areas
- *   and visited photos keep working offline.
- * - Everything else: network first, no interference with Firebase/Google.
- *
- * Defensive by design: only GET, skips cross-origin except OSM tiles,
- * and never caches API/auth traffic.
+ * - Map tiles + local images: cache-first, capped.
+ * - Trip Pack cache (managed by lib/trip-pack.ts) is preserved.
+ * - Navigations: network first, shell fallback.
+ * - Never touches Firebase/API traffic.
  */
 
-const SHELL_CACHE = "yakjak-shell-v1";
-const TILE_CACHE = "yakjak-tiles-v1";
+const SHELL_CACHE = "yakjak-shell-v2";
+const TILE_CACHE = "yakjak-tiles-v2";
+const PACK_CACHE = "yakjak-trip-packs-v1";
 const MAX_TILES = 300;
 
 self.addEventListener("install", (event) => {
-  const e = event as ExtendableEvent;
-  e.waitUntil(
+  event.waitUntil(
     caches
       .open(SHELL_CACHE)
       .then((cache) => cache.add("/"))
-      .then(() => (self as unknown as ServiceWorkerGlobalScope).skipWaiting())
+      .then(() => self.skipWaiting())
       .catch(() => undefined),
   );
 });
 
 self.addEventListener("activate", (event) => {
-  const e = event as ExtendableEvent;
-  e.waitUntil(
+  event.waitUntil(
     (async () => {
+      const keep = new Set([SHELL_CACHE, TILE_CACHE, PACK_CACHE]);
       const keys = await caches.keys();
       await Promise.all(
-        keys
-          .filter((k) => k !== SHELL_CACHE && k !== TILE_CACHE)
-          .map((k) => caches.delete(k)),
+        keys.filter((k) => !keep.has(k)).map((k) => caches.delete(k)),
       );
-      await (
-        self as unknown as ServiceWorkerGlobalScope
-      ).clients.claim();
+      await self.clients.claim();
     })().catch(() => undefined),
   );
 });
 
-async function trimCache(cacheName: string, maxItems: number) {
+async function trimCache(cacheName, maxItems) {
   try {
     const cache = await caches.open(cacheName);
     const keys = await cache.keys();
     if (keys.length > maxItems) {
-      await cache.delete(keys[0]!);
+      await cache.delete(keys[0]);
       await trimCache(cacheName, maxItems);
     }
   } catch {
@@ -55,10 +49,10 @@ async function trimCache(cacheName: string, maxItems: number) {
 }
 
 self.addEventListener("fetch", (event) => {
-  const e = event as FetchEvent;
-  const req = e.request;
+  const req = event.request;
   if (req.method !== "GET") return;
-  let url: URL;
+
+  let url;
   try {
     url = new URL(req.url);
   } catch {
@@ -67,7 +61,7 @@ self.addEventListener("fetch", (event) => {
 
   // Map tiles: cache-first (offline trekking).
   if (url.hostname === "tile.openstreetmap.org") {
-    e.respondWith(
+    event.respondWith(
       (async () => {
         const cached = await caches.match(req);
         if (cached) return cached;
@@ -83,11 +77,25 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Same-origin navigations: network first, shell fallback offline.
-  if (url.origin === self.location.origin && req.mode === "navigate") {
-    e.respondWith(
-      fetch(req).catch(() => caches.match("/")),
+  // Local images: cache-first so downloaded photos survive offline.
+  if (url.origin === self.location.origin && req.destination === "image") {
+    event.respondWith(
+      (async () => {
+        const cached = await caches.match(req);
+        if (cached) return cached;
+        const res = await fetch(req);
+        if (res.ok) {
+          const cache = await caches.open(SHELL_CACHE);
+          cache.put(req, res.clone()).catch(() => undefined);
+        }
+        return res;
+      })().catch(() => caches.match(req)),
     );
     return;
+  }
+
+  // Same-origin navigations: network first, shell fallback offline.
+  if (url.origin === self.location.origin && req.mode === "navigate") {
+    event.respondWith(fetch(req).catch(() => caches.match("/")));
   }
 });
