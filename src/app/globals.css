@@ -1,40 +1,43 @@
 @import "tailwindcss";
 
 @theme {
-  --color-yak-bg: #f7f4ec;
-  --color-yak-lowest: #f1ebda;
-  --color-yak-surface: #ffffff;
-  --color-yak-high: #e7e0cc;
-  --color-yak-input: #ffffff;
-  --color-yak-primary: #1f4d3a;
-  --color-yak-onprimary: #ffffff;
-  --color-yak-accent: #b54708;
-  --color-yak-cream: #1f2a21;
-  --color-yak-muted: #5d6f61;
-  --color-yak-muted2: #66766a;
-  --color-yak-border: #ded7c4;
-  --color-yak-sage: #e3ecd9;
-  --color-yak-sand: #d9c68a;
+  --color-yak-bg: #FAF7EF;
+  --color-yak-lowest: #F3EEE2;
+  --color-yak-surface: #FFFFFF;
+  --color-yak-high: #ECE5D6;
+  --color-yak-input: #FFFFFF;
+  --color-yak-primary: #14532D;
+  --color-yak-onprimary: #FFFFFF;
+  --color-yak-accent: #C2410C;
+  --color-yak-cream: #17251C;
+  --color-yak-muted: #5B6B5F;
+  --color-yak-muted2: #6B7A6F;
+  --color-yak-border: #E5DDCB;
+  --color-yak-sage: #E8F0E4;
+  --color-yak-sand: #F0D9A8;
+  --color-yak-secondary: #0F766E;
+  --color-yak-danger: #B42318;
+  --color-yak-danger-soft: #F9DAD6;
 }
 
 html {
-  background: #f7f4ec;
+  background: var(--color-yak-bg);
   scroll-behavior: smooth;
 }
 
 body {
-  background: #f7f4ec;
-  color: #1f2a21;
+  background: var(--color-yak-bg);
+  color: var(--color-yak-cream);
 }
 
 ::selection {
-  background: #1f4d3a;
-  color: #ffffff;
+  background: var(--color-yak-primary);
+  color: var(--color-yak-onprimary);
 }
 
 @layer base {
   :focus-visible {
-    outline: 2px solid #2f7d4f;
+    outline: 2px solid var(--color-yak-secondary);
     outline-offset: 2px;
   }
 }
@@ -93,7 +96,7 @@ body {
 /* Leaflet */
 .leaflet-container {
   font-family: inherit;
-  background: #e8efe4;
+  background: #E8F0E4;
 }
 
 .leaflet-control-attribution {

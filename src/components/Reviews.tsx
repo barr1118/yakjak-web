@@ -32,7 +32,7 @@ function Stars({
           aria-label={`${s} star${s > 1 ? "s" : ""}`}
           className={`${size} leading-none transition-transform ${
             onPick ? "cursor-pointer hover:scale-125" : ""
-          } ${s <= value ? "text-[#E8A020]" : "text-[#D9D2BD]"}`}
+          } ${s <= value ? "text-[#C58A1B]" : "text-[#E2DAC8]"}`}
         >
           ★
         </button>
@@ -86,18 +86,18 @@ export default function Reviews({
   return (
     <div>
       <div className="flex items-center gap-3">
-        <h3 className="text-lg font-extrabold text-[#1F2A21]">
+        <h3 className="text-lg font-extrabold text-[#17251C]">
           {t(lang, "reviews_title")}
         </h3>
         {avg != null && (
-          <span className="rounded-full bg-[#E2EFE0] px-2.5 py-1 text-xs font-extrabold text-[#2F7D4F]">
+          <span className="rounded-full bg-[#E8F0E4] px-2.5 py-1 text-xs font-extrabold text-[#1B6B3A]">
             ★ {avg.toFixed(1)} · {reviews.length}
           </span>
         )}
       </div>
 
       {/* Form */}
-      <div className="mt-3 rounded-2xl border border-[#D9D2BD] bg-[#FFFFFF] p-4 shadow-sm">
+      <div className="mt-3 rounded-2xl border border-[#E2DAC8] bg-[#FFFFFF] p-4 shadow-sm">
         {user ? (
           <>
             <Stars value={rating} onPick={setRating} />
@@ -107,12 +107,12 @@ export default function Reviews({
               rows={3}
               maxLength={500}
               placeholder={t(lang, "review_placeholder")}
-              className="mt-3 w-full rounded-lg border border-[#D9D2BD] bg-[#F4F1E8] px-3 py-2.5 text-sm text-[#1F2A21] placeholder-[#5D6F61] outline-none focus:border-[#2F7D4F]"
+              className="mt-3 w-full rounded-lg border border-[#E2DAC8] bg-[#F7F3EA] px-3 py-2.5 text-sm text-[#17251C] placeholder-[#5B6B5F] outline-none focus:border-[#1B6B3A]"
             />
             <button
               onClick={submit}
               disabled={sending || text.trim() === ""}
-              className="mt-3 rounded-lg bg-[#2F7D4F] px-5 py-2.5 text-sm font-extrabold text-white disabled:opacity-50"
+              className="mt-3 rounded-lg bg-[#1B6B3A] px-5 py-2.5 text-sm font-extrabold text-white disabled:opacity-50"
             >
               {t(lang, "review_submit")}
             </button>
@@ -120,7 +120,7 @@ export default function Reviews({
         ) : (
           <button
             onClick={() => setLoginOpen(true)}
-            className="w-full rounded-lg border border-dashed border-[#D9D2BD] py-4 text-sm font-bold text-[#5D6F61] hover:border-[#2F7D4F] hover:text-[#2F7D4F]"
+            className="w-full rounded-lg border border-dashed border-[#E2DAC8] py-4 text-sm font-bold text-[#5B6B5F] hover:border-[#1B6B3A] hover:text-[#1B6B3A]"
           >
             {t(lang, "review_login_prompt")}
           </button>
@@ -130,21 +130,21 @@ export default function Reviews({
       {/* List */}
       <div className="mt-3 space-y-3">
         {reviews.length === 0 && (
-          <p className="py-4 text-center text-sm text-[#5D6F61]">
+          <p className="py-4 text-center text-sm text-[#5B6B5F]">
             {t(lang, "review_empty")}
           </p>
         )}
         {reviews.map((r) => (
           <div
             key={r.id}
-            className="rounded-2xl border border-[#D9D2BD] bg-[#FFFFFF] p-4 shadow-sm"
+            className="rounded-2xl border border-[#E2DAC8] bg-[#FFFFFF] p-4 shadow-sm"
           >
             <div className="flex items-center gap-2">
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#E7E0CC] text-sm font-black text-[#2F7D4F]">
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#ECE5D6] text-sm font-black text-[#1B6B3A]">
                 {(r.userName[0] ?? "?").toUpperCase()}
               </span>
               <div className="min-w-0 flex-1">
-                <div className="truncate text-sm font-extrabold text-[#1F2A21]">
+                <div className="truncate text-sm font-extrabold text-[#17251C]">
                   {r.userName}
                 </div>
                 <Stars value={r.rating} size="text-sm" />
@@ -152,13 +152,13 @@ export default function Reviews({
               {user?.uid === r.userId && (
                 <button
                   onClick={() => deleteReview(r.id, user?.uid)}
-                  className="text-xs font-bold text-[#5D6F61] hover:text-[#B42318]"
+                  className="text-xs font-bold text-[#5B6B5F] hover:text-[#B42318]"
                 >
                   {t(lang, "review_delete")}
                 </button>
               )}
             </div>
-            <p className="mt-2 text-sm leading-relaxed text-[#1F2A21]">{r.text}</p>
+            <p className="mt-2 text-sm leading-relaxed text-[#17251C]">{r.text}</p>
           </div>
         ))}
       </div>

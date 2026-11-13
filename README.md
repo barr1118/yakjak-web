@@ -36,7 +36,14 @@ Data demo disimpan di `localStorage` browser (`yakjak-demo-v2`). Tombol **Reset 
 
 ## Stack
 
-Next.js 16 (App Router) · React 19 · Tailwind 4 · Leaflet · Firebase Auth/Firestore (opsional; data inti berjalan lokal) · TypeScript.
+Next.js 16 (App Router) · React 19 · Tailwind 4 · Leaflet · Firebase Auth/Firestore (project `yakjak-fc2ca`) · TypeScript.
+
+## Firebase
+
+- Web config: `.env.local` (gitignored; template di `.env.example`).
+- Rules: `firebase.json` + `firestore.rules`, deploy dengan `npx firebase-tools deploy --only firestore:rules`.
+- Auth aktif: Email/Password dan Google. Tambahkan domain produksi ke **Authentication → Settings → Authorized domains** sebelum deploy.
+- Katalog destinasi tetap memakai seed lokal di `src/lib/places.ts`; Firestore dipakai untuk favorit, ulasan, dan riwayat pengguna.
 
 ## Catatan data
 

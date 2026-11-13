@@ -16,7 +16,7 @@ import type { Place } from "@/lib/types";
 function pinIcon(active = false) {
   return L.divIcon({
     className: "",
-    html: `<div style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:9999px;background:#FFFFFF;border:2px solid ${active ? "#2F7D4F" : "#E05F14"};color:${active ? "#2F7D4F" : "#E05F14"};font-size:20px;box-shadow:0 2px 8px rgba(0,0,0,.5)">📍</div>`,
+    html: `<div style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:9999px;background:#FFFFFF;border:2px solid ${active ? "#1B6B3A" : "#C2410C"};color:${active ? "#1B6B3A" : "#C2410C"};font-size:20px;box-shadow:0 2px 8px rgba(0,0,0,.5)">📍</div>`,
     iconSize: [36, 36],
     iconAnchor: [18, 32],
   });
@@ -28,7 +28,7 @@ function pinIcon(active = false) {
 function userDot() {
   return L.divIcon({
     className: "",
-    html: `<div style="position:relative;width:22px;height:22px;"><span style="position:absolute;inset:0;border-radius:9999px;background:#2563EB;opacity:.35;animation:yakPing 1.6s ease-out infinite;"></span><span style="position:absolute;inset:5px;border-radius:9999px;background:#2563EB;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);"></span></div><style>@keyframes yakPing{0%{transform:scale(.6);opacity:.5}80%,100%{transform:scale(1.7);opacity:0}}</style>`,
+    html: `<div style="position:relative;width:22px;height:22px;"><span style="position:absolute;inset:0;border-radius:9999px;background:#0F766E;opacity:.35;animation:yakPing 1.6s ease-out infinite;"></span><span style="position:absolute;inset:5px;border-radius:9999px;background:#0F766E;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.4);"></span></div><style>@keyframes yakPing{0%{transform:scale(.6);opacity:.5}80%,100%{transform:scale(1.7);opacity:0}}</style>`,
     iconSize: [22, 22],
     iconAnchor: [11, 11],
   });
@@ -114,7 +114,7 @@ export default function TrekMap({
 
   return (
     <div
-      className="relative overflow-hidden rounded-2xl border border-[#D9D2BD]"
+      className="relative overflow-hidden rounded-2xl border border-[#E2DAC8]"
       style={{ height }}
     >
       <MapContainer
@@ -122,7 +122,7 @@ export default function TrekMap({
         zoom={zoom}
         minZoom={minZoom}
         maxZoom={maxZoom}
-        style={{ height: "100%", width: "100%", background: "#F1EBDA" }}
+        style={{ height: "100%", width: "100%", background: "#F3EEE2" }}
       >
         <TileLayer
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -134,7 +134,7 @@ export default function TrekMap({
               key={p.slug}
               positions={p.track.map(([la, ln]) => [la, ln] as [number, number])}
               pathOptions={{
-                color: "#2F7D4F",
+                color: "#1B6B3A",
                 weight: p.slug === activeSlug ? 5 : 3,
               }}
             />
@@ -152,7 +152,7 @@ export default function TrekMap({
         {traveled.length > 1 && (
           <Polyline
             positions={traveled}
-            pathOptions={{ color: "#E05F14", weight: 4, dashArray: "8 6" }}
+            pathOptions={{ color: "#C2410C", weight: 4, dashArray: "8 6" }}
           />
         )}
         {userPosition && (

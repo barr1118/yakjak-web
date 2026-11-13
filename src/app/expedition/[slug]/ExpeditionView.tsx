@@ -136,25 +136,25 @@ export default function ExpeditionView({ place }: { place: Place }) {
 
   return (
     <div className="-mx-4 -mt-6 sm:-mx-6">
-      <div className="border-b border-[#DED7C4] bg-[#FBFAF6] px-4 py-4 sm:px-6">
+      <div className="border-b border-[#E5DDCB] bg-[#FCFAF5] px-4 py-4 sm:px-6">
         <div className="mx-auto flex max-w-3xl items-center gap-3">
           <Link
             href={`/place/${place.slug}`}
             aria-label={t(lang, "back")}
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F1EBDA] text-lg text-[#1F2A21]"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#F3EEE2] text-lg text-[#17251C]"
           >
             ←
           </Link>
           <div className="min-w-0 flex-1">
-            <h1 className="truncate text-lg font-extrabold tracking-tight text-[#1F2A21]">
+            <h1 className="truncate text-lg font-extrabold tracking-tight text-[#17251C]">
               {place.name}
             </h1>
-            <p className="text-xs text-[#5D6F61]">
+            <p className="text-xs text-[#5B6B5F]">
               {place.distance} {t(lang, "unit_km")} · {place.difficulty}
             </p>
           </div>
           {phase === "tracking" && (
-            <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-[#B54708] px-3 py-1 text-[11px] font-black tracking-widest text-white">
+            <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-[#C2410C] px-3 py-1 text-[11px] font-black tracking-widest text-white">
               <span className="h-2 w-2 animate-pulse rounded-full bg-white" />
               {t(lang, "exp_live")}
             </span>
@@ -209,11 +209,11 @@ export default function ExpeditionView({ place }: { place: Place }) {
             <>
               <button
                 onClick={start}
-                className="w-full rounded-2xl bg-[#1F4D3A] py-4 font-extrabold text-white transition-colors hover:bg-[#2F7D4F]"
+                className="w-full rounded-2xl bg-[#14532D] py-4 font-extrabold text-white transition-colors hover:bg-[#1B6B3A]"
               >
                 ▶ {t(lang, "exp_start")}
               </button>
-              <p className="mt-2 text-center text-xs text-[#5D6F61]">
+              <p className="mt-2 text-center text-xs text-[#5B6B5F]">
                 {t(lang, "exp_tap_start")}
               </p>
             </>
@@ -222,27 +222,27 @@ export default function ExpeditionView({ place }: { place: Place }) {
             <div className="flex gap-3">
               <button
                 onClick={discard}
-                className="flex-1 rounded-2xl border border-[#D9D2BD] bg-[#FFFFFF] py-4 font-extrabold text-[#5D6F61]"
+                className="flex-1 rounded-2xl border border-[#E2DAC8] bg-[#FFFFFF] py-4 font-extrabold text-[#5B6B5F]"
               >
                 {t(lang, "exp_discard")}
               </button>
               <button
                 onClick={finish}
                 disabled={saving}
-                className="flex-[2] rounded-2xl bg-[#1F4D3A] py-4 font-extrabold text-white disabled:opacity-60"
+                className="flex-[2] rounded-2xl bg-[#14532D] py-4 font-extrabold text-white disabled:opacity-60"
               >
                 {t(lang, "exp_finish")}
               </button>
             </div>
           )}
           {phase === "done" && saved && (
-            <div className="rounded-2xl border border-[#C9D9BE] bg-[#EDF3E5] p-4 text-center">
-              <div className="font-extrabold text-[#1F4D3A]">
+            <div className="rounded-2xl border border-[#D5E3CC] bg-[#F1F6EC] p-4 text-center">
+              <div className="font-extrabold text-[#14532D]">
                 ✓ {t(lang, "exp_saved")}
               </div>
               <Link
                 href="/trips"
-                className="mt-2 inline-block text-sm font-bold text-[#1F4D3A] underline"
+                className="mt-2 inline-block text-sm font-bold text-[#14532D] underline"
               >
                 {t(lang, "trips_title")}
               </Link>
@@ -258,9 +258,9 @@ export default function ExpeditionView({ place }: { place: Place }) {
 
 function ExpStat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-[#DED7C4] bg-white px-2 py-3 text-center shadow-sm">
-      <div className="truncate text-base font-black text-[#1F2A21]">{value}</div>
-      <div className="mt-0.5 text-[10px] font-extrabold uppercase tracking-widest text-[#5D6F61]">
+    <div className="rounded-2xl border border-[#E5DDCB] bg-white px-2 py-3 text-center shadow-sm">
+      <div className="truncate text-base font-black text-[#17251C]">{value}</div>
+      <div className="mt-0.5 text-[10px] font-extrabold uppercase tracking-widest text-[#5B6B5F]">
         {label}
       </div>
     </div>

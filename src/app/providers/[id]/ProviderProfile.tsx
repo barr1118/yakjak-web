@@ -29,11 +29,11 @@ export default function ProviderProfile({ providerId }: { providerId: string }) 
 
   if (!provider) {
     return (
-      <div className="rounded-2xl border border-[#DED7C4] bg-white p-10 text-center">
-        <p className="text-sm text-[#5D6F61]">Provider not found.</p>
+      <div className="rounded-2xl border border-[#E5DDCB] bg-white p-10 text-center">
+        <p className="text-sm text-[#5B6B5F]">Provider not found.</p>
         <Link
           href="/providers"
-          className="mt-3 inline-block rounded-full bg-[#1F4D3A] px-4 py-2 text-xs font-extrabold text-white"
+          className="mt-3 inline-block rounded-full bg-[#14532D] px-4 py-2 text-xs font-extrabold text-white"
         >
           ← {t(lang, "nav_local")}
         </Link>
@@ -58,12 +58,12 @@ export default function ProviderProfile({ providerId }: { providerId: string }) 
     <div>
       <Link
         href="/providers"
-        className="text-[11px] font-extrabold text-[#5D6F61] hover:text-[#1F4D3A]"
+        className="text-[11px] font-extrabold text-[#5B6B5F] hover:text-[#14532D]"
       >
         ← {t(lang, "nav_local")}
       </Link>
 
-      <section className="mt-3 overflow-hidden rounded-[28px] bg-[#1F4D3A] text-white">
+      <section className="mt-3 overflow-hidden rounded-[28px] bg-[#14532D] text-white">
         <div className="p-6 sm:p-9">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
             <div
@@ -78,7 +78,7 @@ export default function ProviderProfile({ providerId }: { providerId: string }) 
                   {provider.name}
                 </h1>
                 {provider.verified ? (
-                  <span className="rounded-full bg-[#D9C68A] px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.1em] text-[#1F2A21]">
+                  <span className="rounded-full bg-[#F0D9A8] px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.1em] text-[#17251C]">
                     ✓ {t(lang, "provider_verified")}
                   </span>
                 ) : (
@@ -87,7 +87,7 @@ export default function ProviderProfile({ providerId }: { providerId: string }) 
                   </span>
                 )}
               </div>
-              <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#C9D9BE]">
+              <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.16em] text-[#D5E3CC]">
                 {providerTypeLabel(provider.type, lang)} · {provider.rating.toFixed(1)} ★ ·{" "}
                 {provider.reviewsCount} {lang === "id" ? "ulasan" : "reviews"}
               </p>
@@ -114,7 +114,7 @@ export default function ProviderProfile({ providerId }: { providerId: string }) 
               <button
                 onClick={() => offerings[0] && book(offerings[0])}
                 disabled={offerings.length === 0}
-                className="mt-3 w-full rounded-full bg-[#F7F4EC] px-4 py-2.5 text-[11px] font-extrabold text-[#1F4D3A] disabled:opacity-50"
+                className="mt-3 w-full rounded-full bg-[#FAF7EF] px-4 py-2.5 text-[11px] font-extrabold text-[#14532D] disabled:opacity-50"
               >
                 {t(lang, "book_now")}
               </button>
@@ -125,12 +125,12 @@ export default function ProviderProfile({ providerId }: { providerId: string }) 
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
         <div>
-          <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#1F2A21]">
+          <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#17251C]">
             {lang === "id" ? "Layanan" : "Offerings"}
           </h2>
           <div className="mt-3 space-y-3">
             {offerings.length === 0 && (
-              <p className="rounded-2xl border border-dashed border-[#DED7C4] bg-white p-5 text-sm text-[#5D6F61]">
+              <p className="rounded-2xl border border-dashed border-[#E5DDCB] bg-white p-5 text-sm text-[#5B6B5F]">
                 {lang === "id"
                   ? "Belum ada layanan yang dipublikasikan."
                   : "No offerings published yet."}
@@ -141,43 +141,43 @@ export default function ProviderProfile({ providerId }: { providerId: string }) 
               return (
                 <div
                   key={o.id}
-                  className="rounded-2xl border border-[#DED7C4] bg-white p-4"
+                  className="rounded-2xl border border-[#E5DDCB] bg-white p-4"
                 >
                   <div className="flex flex-wrap items-start justify-between gap-3">
                     <div>
-                      <h3 className="text-sm font-extrabold text-[#1F2A21]">
+                      <h3 className="text-sm font-extrabold text-[#17251C]">
                         {o.title}
                       </h3>
-                      <p className="mt-1 max-w-lg text-[11px] leading-relaxed text-[#5D6F61]">
+                      <p className="mt-1 max-w-lg text-[11px] leading-relaxed text-[#5B6B5F]">
                         {o.description}
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className="text-base font-black text-[#1F4D3A]">
+                      <p className="text-base font-black text-[#14532D]">
                         {formatRupiah(o.price)}
                       </p>
-                      <p className="text-[9px] font-bold text-[#9A8F7B]">
+                      <p className="text-[9px] font-bold text-[#7C6C58]">
                         / {o.unit}
                       </p>
                     </div>
                   </div>
-                  <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-[#EDE7D8] pt-3">
-                    <div className="flex flex-wrap gap-1.5 text-[9px] font-bold text-[#5D6F61]">
+                  <div className="mt-3 flex flex-wrap items-center justify-between gap-2 border-t border-[#F1EADD] pt-3">
+                    <div className="flex flex-wrap gap-1.5 text-[9px] font-bold text-[#5B6B5F]">
                       {dest && (
                         <Link
                           href={`/place/${dest.slug}`}
-                          className="rounded-full bg-[#F1EBDA] px-2 py-1 hover:text-[#1F4D3A]"
+                          className="rounded-full bg-[#F3EEE2] px-2 py-1 hover:text-[#14532D]"
                         >
                           📍 {dest.name}
                         </Link>
                       )}
-                      <span className="rounded-full bg-[#F1EBDA] px-2 py-1">
+                      <span className="rounded-full bg-[#F3EEE2] px-2 py-1">
                         {t(lang, "capacity")} {o.capacity}
                       </span>
                     </div>
                     <button
                       onClick={() => book(o)}
-                      className="rounded-full bg-[#1F4D3A] px-4 py-2 text-[10px] font-extrabold text-white hover:bg-[#2F7D4F]"
+                      className="rounded-full bg-[#14532D] px-4 py-2 text-[10px] font-extrabold text-white hover:bg-[#1B6B3A]"
                     >
                       {t(lang, "book_now")}
                     </button>
@@ -187,7 +187,7 @@ export default function ProviderProfile({ providerId }: { providerId: string }) 
             })}
           </div>
 
-          <h2 className="mt-8 font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#1F2A21]">
+          <h2 className="mt-8 font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#17251C]">
             {lang === "id" ? "Destinasi yang dilayani" : "Destinations served"}
           </h2>
           <div className="mt-3 flex flex-wrap gap-2">
@@ -196,7 +196,7 @@ export default function ProviderProfile({ providerId }: { providerId: string }) 
                 <Link
                   key={d.slug}
                   href={`/place/${d.slug}`}
-                  className="rounded-full border border-[#DED7C4] bg-white px-3 py-2 text-[10px] font-extrabold text-[#1F2A21] hover:border-[#2F7D4F]"
+                  className="rounded-full border border-[#E5DDCB] bg-white px-3 py-2 text-[10px] font-extrabold text-[#17251C] hover:border-[#1B6B3A]"
                 >
                   {d.name}
                 </Link>
@@ -206,26 +206,26 @@ export default function ProviderProfile({ providerId }: { providerId: string }) 
         </div>
 
         <aside className="space-y-4">
-          <div className="rounded-2xl border border-[#C9D9BE] bg-[#EDF3E5] p-5">
-            <h3 className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#1F4D3A]">
+          <div className="rounded-2xl border border-[#D5E3CC] bg-[#F1F6EC] p-5">
+            <h3 className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#14532D]">
               {lang === "id" ? "Kenapa terverifikasi" : "Why verified"}
             </h3>
-            <ul className="mt-3 space-y-2 text-[11px] leading-relaxed text-[#4D5D51]">
+            <ul className="mt-3 space-y-2 text-[11px] leading-relaxed text-[#4F5F54]">
               <li>✓ {lang === "id" ? "Identitas dan layanan dicek tim lapangan" : "Identity and service checked by the field team"}</li>
               <li>✓ {lang === "id" ? "Harga dan kapasitas ditulis transparan" : "Price and capacity stated transparently"}</li>
               <li>✓ {lang === "id" ? "Terhubung dengan aturan gampong/Panglima Laot" : "Connected to gampong/Panglima Laot rules"}</li>
             </ul>
           </div>
-          <div className="rounded-2xl border border-[#DED7C4] bg-white p-5">
-            <h3 className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#5D6F61]">
+          <div className="rounded-2xl border border-[#E5DDCB] bg-white p-5">
+            <h3 className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#5B6B5F]">
               {lang === "id" ? "Cara pesan" : "How booking works"}
             </h3>
-            <ol className="mt-3 space-y-2 text-[11px] leading-relaxed text-[#5D6F61]">
+            <ol className="mt-3 space-y-2 text-[11px] leading-relaxed text-[#5B6B5F]">
               <li>1. {lang === "id" ? "Ajukan tanggal dan jumlah orang." : "Send your date and group size."}</li>
               <li>2. {lang === "id" ? "Penyedia mengonfirmasi via WhatsApp." : "The provider confirms via WhatsApp."}</li>
               <li>3. {lang === "id" ? "Bayar langsung di lokasi." : "Pay directly on site."}</li>
             </ol>
-            <p className="mt-3 border-t border-[#EDE7D8] pt-3 text-[9px] italic text-[#9A8F7B]">
+            <p className="mt-3 border-t border-[#F1EADD] pt-3 text-[9px] italic text-[#7C6C58]">
               {t(lang, "booking_pay_note")}
             </p>
           </div>

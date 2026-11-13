@@ -72,18 +72,19 @@ export default function ExplorePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative overflow-hidden rounded-[32px] bg-[#143A2B] text-white shadow-[0_18px_50px_-24px_rgba(20,58,43,0.8)]">
+      <section className="relative overflow-hidden rounded-[32px] bg-[#123B26] text-white shadow-[0_18px_50px_-24px_rgba(18,59,38,0.75)]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/lhok-mata-ie.jpeg"
           alt=""
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover saturate-[.9]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1F17]/95 via-[#0B1F17]/80 to-[#0B1F17]/20" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(15,28,21,0.95)_0%,rgba(15,28,21,0.74)_46%,rgba(15,28,21,0.22)_100%)]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F1C15]/70 via-transparent to-transparent" />
         <div className="relative grid gap-8 p-6 sm:p-10 lg:grid-cols-[1.1fr_0.9fr] lg:p-14">
           <div>
-            <p className="flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.24em] text-[#C9D9BE]">
-              <span className="h-px w-8 bg-[#C9D9BE]" />
+            <p className="flex items-center gap-2 text-[10px] font-extrabold uppercase tracking-[0.24em] text-[#D5E3CC]">
+              <span className="h-px w-8 bg-[#D5E3CC]" />
               {t(lang, "hero_eyebrow")}
             </p>
             <h1 className="mt-4 max-w-xl font-[family-name:var(--font-fraunces)] text-4xl font-semibold leading-[1.02] tracking-tight sm:text-5xl lg:text-6xl">
@@ -91,34 +92,34 @@ export default function ExplorePage() {
                 <>
                   Hidden gems,
                   <br />
-                  <span className="text-[#D9C68A]">dampak nyata.</span>
+                  <span className="text-[#F2C879]">dampak nyata.</span>
                 </>
               ) : (
                 <>
                   Hidden gems,
                   <br />
-                  <span className="text-[#D9C68A]">real impact.</span>
+                  <span className="text-[#F2C879]">real impact.</span>
                 </>
               )}
             </h1>
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-white/75 sm:text-base">
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-white/80 sm:text-base">
               {t(lang, "hero_subtitle")}
             </p>
             <div className="mt-6 flex flex-wrap gap-2.5">
               <a
                 href="#destinasi"
-                className="rounded-full bg-[#F7F4EC] px-5 py-3 text-xs font-extrabold text-[#1F4D3A] transition-transform hover:-translate-y-0.5"
+                className="rounded-full bg-[#FAF7EF] px-5 py-3 text-xs font-extrabold text-[#14532D] transition-transform hover:-translate-y-0.5"
               >
                 {t(lang, "hero_cta")} ↓
               </a>
               <Link
                 href="/providers"
-                className="rounded-full border border-white/25 bg-white/5 px-5 py-3 text-xs font-extrabold text-white backdrop-blur transition-colors hover:bg-white/10"
+                className="rounded-full border border-white/60 bg-[#0F1C15]/55 px-5 py-3 text-xs font-extrabold text-white backdrop-blur-md transition-colors hover:bg-[#0F1C15]/70"
               >
                 {t(lang, "providers_title")}
               </Link>
             </div>
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
+            <div className="mt-9 flex flex-wrap gap-x-6 gap-y-3 sm:gap-x-8 sm:[&>*+*]:border-l sm:[&>*+*]:border-white/15 sm:[&>*+*]:pl-6">
               <HeroStat
                 value={`${verifiedCount}`}
                 label={
@@ -134,35 +135,35 @@ export default function ExplorePage() {
           </div>
 
           <div className="hidden items-end justify-end lg:flex">
-            <div className="w-full max-w-xs rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-md">
-              <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#C9D9BE]">
+            <div className="w-full max-w-xs rounded-2xl border border-white/20 bg-[#0F1C15]/35 p-4 backdrop-blur-md">
+              <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#D5E3CC]">
                 {lang === "id" ? "Standar YakJak" : "The YakJak standard"}
               </p>
               <ul className="mt-3 space-y-2.5 text-[11px] leading-snug text-white/85">
                 <li className="flex gap-2">
-                  <span className="text-[#D9C68A]">✓</span>
+                  <span className="text-[#F0D9A8]">✓</span>
                   {lang === "id"
                     ? "Titik jalur dicek tim lapangan"
                     : "Route points checked by the field team"}
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-[#D9C68A]">✓</span>
+                  <span className="text-[#F0D9A8]">✓</span>
                   {lang === "id"
                     ? "Penyedia lokal terverifikasi"
                     : "Verified local providers"}
                 </li>
                 <li className="flex gap-2">
-                  <span className="text-[#D9C68A]">✓</span>
+                  <span className="text-[#F0D9A8]">✓</span>
                   {lang === "id"
                     ? "Izin & aturan adat ditulis jelas"
                     : "Permits and adat rules stated clearly"}
                 </li>
               </ul>
-              <div className="mt-4 flex items-center justify-between rounded-xl bg-[#0B1F17]/40 px-3 py-2">
+              <div className="mt-4 flex items-center justify-between rounded-xl bg-[#0F1C15]/40 px-3 py-2">
                 <span className="text-[9px] font-bold uppercase tracking-[0.14em] text-white/60">
                   {lang === "id" ? "Mitra adat" : "Adat partner"}
                 </span>
-                <span className="text-[10px] font-extrabold text-[#D9C68A]">
+                <span className="text-[10px] font-extrabold text-[#F0D9A8]">
                   Panglima Laot
                 </span>
               </div>
@@ -175,20 +176,20 @@ export default function ExplorePage() {
       <section id="destinasi" className="mt-10 scroll-mt-24">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#B54708]">
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#C2410C]">
               {t(lang, "curated_title")}
             </p>
-            <h2 className="mt-1.5 font-[family-name:var(--font-fraunces)] text-3xl font-semibold tracking-tight text-[#1F2A21]">
+            <h2 className="mt-1.5 font-[family-name:var(--font-fraunces)] text-3xl font-semibold tracking-tight text-[#17251C]">
               {lang === "id" ? "Rute yang sudah dicek" : "Routes we have checked"}
             </h2>
-            <p className="mt-1 text-sm text-[#5D6F61]">
+            <p className="mt-1 text-sm text-[#5B6B5F]">
               {t(lang, "curated_sub")}
             </p>
           </div>
           <div className="flex items-center gap-2">
             <Link
               href="/map"
-              className="rounded-full border border-[#DED7C4] bg-white px-4 py-2 text-[10px] font-extrabold text-[#1F4D3A] hover:border-[#2F7D4F]"
+              className="rounded-full border border-[#E5DDCB] bg-white px-4 py-2 text-[10px] font-extrabold text-[#14532D] hover:border-[#1B6B3A]"
             >
               🗺 {lang === "id" ? "Peta" : "Map"}
             </Link>
@@ -196,14 +197,14 @@ export default function ExplorePage() {
               <button
                 onClick={() => scrollFeatured(-1)}
                 aria-label="Previous"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#DED7C4] bg-white text-lg text-[#1F2A21] transition-colors hover:border-[#2F7D4F]"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#E5DDCB] bg-white text-lg text-[#17251C] transition-colors hover:border-[#1B6B3A]"
               >
                 ‹
               </button>
               <button
                 onClick={() => scrollFeatured(1)}
                 aria-label="Next"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#DED7C4] bg-white text-lg text-[#1F2A21] transition-colors hover:border-[#2F7D4F]"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-[#E5DDCB] bg-white text-lg text-[#17251C] transition-colors hover:border-[#1B6B3A]"
               >
                 ›
               </button>
@@ -213,8 +214,8 @@ export default function ExplorePage() {
 
         {/* Search + category */}
         <div className="mt-5 flex flex-col gap-3 lg:flex-row lg:items-center">
-          <div className="flex h-11 flex-1 items-center gap-2 rounded-full border border-[#DED7C4] bg-white px-4 shadow-sm">
-            <span className="text-sm text-[#5D6F61]">⌕</span>
+          <div className="flex h-11 flex-1 items-center gap-2 rounded-full border border-[#E5DDCB] bg-white px-4 shadow-sm">
+            <span className="text-sm text-[#5B6B5F]">⌕</span>
             <input
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -223,12 +224,12 @@ export default function ExplorePage() {
                   ? "Cari destinasi, daerah, atau kategori…"
                   : "Search destinations, regions, or categories…"
               }
-              className="w-full bg-transparent text-sm text-[#1F2A21] placeholder-[#9A8F7B] outline-none"
+              className="w-full bg-transparent text-sm text-[#17251C] placeholder-[#7C6C58] outline-none"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="text-xs text-[#9A8F7B] hover:text-[#1F2A21]"
+                className="text-xs text-[#7C6C58] hover:text-[#17251C]"
                 aria-label="Clear search"
               >
                 ✕
@@ -243,8 +244,8 @@ export default function ExplorePage() {
                 aria-pressed={category === c}
                 className={`shrink-0 rounded-full border px-3.5 py-2 text-[10px] font-extrabold uppercase tracking-[0.08em] transition-colors ${
                   category === c
-                    ? "border-[#1F4D3A] bg-[#1F4D3A] text-white"
-                    : "border-[#DED7C4] bg-white text-[#5D6F61] hover:border-[#2F7D4F]/50"
+                    ? "border-[#14532D] bg-[#14532D] text-white"
+                    : "border-[#E5DDCB] bg-white text-[#5B6B5F] hover:border-[#1B6B3A]/50"
                 }`}
               >
                 {categoryLabel(c, lang)}
@@ -254,14 +255,14 @@ export default function ExplorePage() {
         </div>
 
         {filtered.length === 0 ? (
-          <div className="mt-6 rounded-2xl border border-dashed border-[#DED7C4] bg-white p-10 text-center">
-            <p className="text-sm text-[#5D6F61]">{t(lang, "no_results")}</p>
+          <div className="mt-6 rounded-2xl border border-dashed border-[#E5DDCB] bg-white p-10 text-center">
+            <p className="text-sm text-[#5B6B5F]">{t(lang, "no_results")}</p>
             <button
               onClick={() => {
                 setSearchQuery("");
                 setCategory("All");
               }}
-              className="mt-3 rounded-full bg-[#1F4D3A] px-4 py-2 text-xs font-extrabold text-white"
+              className="mt-3 rounded-full bg-[#14532D] px-4 py-2 text-xs font-extrabold text-white"
             >
               {t(lang, "reset_filters")}
             </button>
@@ -302,22 +303,22 @@ export default function ExplorePage() {
       </section>
 
       {/* Providers */}
-      <section className="mt-12 rounded-[28px] bg-[#EDF3E5] p-5 sm:p-7">
+      <section className="mt-12 rounded-[28px] bg-[#F1F6EC] p-5 sm:p-7">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#1F4D3A]">
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#14532D]">
               {lang === "id" ? "Ekonomi lokal" : "Local economy"}
             </p>
-            <h2 className="mt-1.5 font-[family-name:var(--font-fraunces)] text-3xl font-semibold tracking-tight text-[#1F2A21]">
+            <h2 className="mt-1.5 font-[family-name:var(--font-fraunces)] text-3xl font-semibold tracking-tight text-[#17251C]">
               {t(lang, "providers_title")}
             </h2>
-            <p className="mt-1 max-w-lg text-sm text-[#5D6F61]">
+            <p className="mt-1 max-w-lg text-sm text-[#5B6B5F]">
               {t(lang, "providers_subtitle")}
             </p>
           </div>
           <Link
             href="/providers"
-            className="rounded-full border border-[#1F4D3A]/20 bg-white px-4 py-2 text-xs font-extrabold text-[#1F4D3A] hover:border-[#1F4D3A]"
+            className="rounded-full border border-[#14532D]/20 bg-white px-4 py-2 text-xs font-extrabold text-[#14532D] hover:border-[#14532D]"
           >
             {lang === "id" ? "Lihat semua" : "View all"} →
           </Link>
@@ -331,10 +332,10 @@ export default function ExplorePage() {
 
       {/* How it works */}
       <section id="cara" className="mt-12 scroll-mt-24">
-        <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#B54708]">
+        <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#C2410C]">
           {lang === "id" ? "Cara kerja" : "How it works"}
         </p>
-        <h2 className="mt-1.5 font-[family-name:var(--font-fraunces)] text-3xl font-semibold tracking-tight text-[#1F2A21]">
+        <h2 className="mt-1.5 font-[family-name:var(--font-fraunces)] text-3xl font-semibold tracking-tight text-[#17251C]">
           {lang === "id"
             ? "Dari layar ke jalur, tanpa ribet"
             : "From screen to trail, without the guesswork"}
@@ -368,15 +369,15 @@ export default function ExplorePage() {
           ].map((s) => (
             <div
               key={s.n}
-              className="rounded-2xl border border-[#DED7C4] bg-white p-5"
+              className="rounded-2xl border border-[#E5DDCB] bg-white p-5"
             >
-              <span className="font-[family-name:var(--font-fraunces)] text-3xl font-semibold text-[#C9B98B]">
+              <span className="font-[family-name:var(--font-fraunces)] text-3xl font-semibold text-[#D8C7A0]">
                 {s.n}
               </span>
-              <h3 className="mt-2 text-sm font-extrabold text-[#1F2A21]">
+              <h3 className="mt-2 text-sm font-extrabold text-[#17251C]">
                 {s.title}
               </h3>
-              <p className="mt-1 text-xs leading-relaxed text-[#5D6F61]">
+              <p className="mt-1 text-xs leading-relaxed text-[#5B6B5F]">
                 {s.body}
               </p>
             </div>
@@ -395,7 +396,7 @@ function HeroStat({ value, label }: { value: string; label: string }) {
       <div className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-white">
         {value}
       </div>
-      <div className="text-[9px] font-bold uppercase tracking-[0.16em] text-white/55">
+      <div className="text-[11px] font-bold uppercase tracking-[0.12em] text-white/80">
         {label}
       </div>
     </div>

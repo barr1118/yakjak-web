@@ -108,36 +108,36 @@ export default function LoginDialog({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-[#0B1F17]/75 backdrop-blur-sm" onClick={handleClose} />
-      <div className="relative max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-3xl border border-[#DED7C4] bg-[#FBFAF6] p-6 shadow-2xl sm:p-8">
+      <div className="absolute inset-0 bg-[#0F1C15]/75 backdrop-blur-sm" onClick={handleClose} />
+      <div className="relative max-h-[92vh] w-full max-w-lg overflow-y-auto rounded-3xl border border-[#E5DDCB] bg-[#FCFAF5] p-6 shadow-2xl sm:p-8">
         <button
           onClick={handleClose}
-          className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-[#5D6F61] hover:bg-[#EDE7D8] hover:text-[#1F2A21]"
+          className="absolute right-4 top-4 flex h-8 w-8 items-center justify-center rounded-full text-[#5B6B5F] hover:bg-[#F1EADD] hover:text-[#17251C]"
           aria-label="Close"
         >
           ✕
         </button>
 
         <div className="pr-8">
-          <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#B54708]">
+          <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#C2410C]">
             YakJak Access
           </p>
-          <h2 className="mt-1 font-[family-name:var(--font-fraunces)] text-3xl font-semibold leading-tight text-[#1F2A21]">
+          <h2 className="mt-1 font-[family-name:var(--font-fraunces)] text-3xl font-semibold leading-tight text-[#17251C]">
             {isLogin ? t(lang, "welcome_back") : t(lang, "create_account")}
           </h2>
-          <p className="mt-1 text-sm text-[#5D6F61]">
+          <p className="mt-1 text-sm text-[#5B6B5F]">
             {isLogin ? t(lang, "login_to_save") : t(lang, "register_to_save")}
           </p>
         </div>
 
         {/* Demo is the fastest path for reviewers. */}
-        <div className="mt-5 rounded-2xl border border-[#C9D9BE] bg-[#EDF3E5] p-4">
+        <div className="mt-5 rounded-2xl border border-[#D5E3CC] bg-[#F1F6EC] p-4">
           <div className="flex items-center justify-between gap-3">
             <div>
-              <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#1F4D3A]">
+              <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#14532D]">
                 {t(lang, "demo_login")}
               </p>
-              <p className="mt-0.5 text-[11px] text-[#5D6F61]">
+              <p className="mt-0.5 text-[11px] text-[#5B6B5F]">
                 Tanpa daftar. Data tersimpan di browser ini.
               </p>
             </div>
@@ -147,13 +147,13 @@ export default function LoginDialog({
               <button
                 key={d.role}
                 onClick={() => demo(d.role)}
-                className="group rounded-xl border border-[#C9D9BE] bg-white px-3 py-3 text-left transition-all hover:-translate-y-0.5 hover:border-[#2F7D4F] hover:shadow-sm"
+                className="group rounded-xl border border-[#D5E3CC] bg-white px-3 py-3 text-left transition-all hover:-translate-y-0.5 hover:border-[#1B6B3A] hover:shadow-sm"
               >
                 <span className="text-lg">{d.icon}</span>
-                <span className="mt-1 block text-[11px] font-extrabold text-[#1F2A21]">
+                <span className="mt-1 block text-[11px] font-extrabold text-[#17251C]">
                   {t(lang, d.labelKey)}
                 </span>
-                <span className="mt-0.5 block text-[9px] leading-snug text-[#5D6F61]">
+                <span className="mt-0.5 block text-[9px] leading-snug text-[#5B6B5F]">
                   {d.desc}
                 </span>
               </button>
@@ -161,10 +161,10 @@ export default function LoginDialog({
           </div>
         </div>
 
-        <div className="my-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.18em] text-[#9A8F7B]">
-          <span className="h-px flex-1 bg-[#DED7C4]" />
+        <div className="my-5 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.18em] text-[#7C6C58]">
+          <span className="h-px flex-1 bg-[#E5DDCB]" />
           atau akun
-          <span className="h-px flex-1 bg-[#DED7C4]" />
+          <span className="h-px flex-1 bg-[#E5DDCB]" />
         </div>
 
         {shownError && (
@@ -173,16 +173,16 @@ export default function LoginDialog({
           </div>
         )}
 
-        <label className="block text-xs font-bold text-[#5D6F61]">
+        <label className="block text-xs font-bold text-[#5B6B5F]">
           {t(lang, "email")}
         </label>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="mt-1 w-full rounded-xl border border-[#DED7C4] bg-white px-3.5 py-2.5 text-sm text-[#1F2A21] outline-none focus:border-[#2F7D4F]"
+          className="mt-1 w-full rounded-xl border border-[#E5DDCB] bg-white px-3.5 py-2.5 text-sm text-[#17251C] outline-none focus:border-[#1B6B3A]"
         />
-        <label className="mt-4 block text-xs font-bold text-[#5D6F61]">
+        <label className="mt-4 block text-xs font-bold text-[#5B6B5F]">
           {t(lang, "password")}
         </label>
         <input
@@ -190,20 +190,20 @@ export default function LoginDialog({
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && submit()}
-          className="mt-1 w-full rounded-xl border border-[#DED7C4] bg-white px-3.5 py-2.5 text-sm text-[#1F2A21] outline-none focus:border-[#2F7D4F]"
+          className="mt-1 w-full rounded-xl border border-[#E5DDCB] bg-white px-3.5 py-2.5 text-sm text-[#17251C] outline-none focus:border-[#1B6B3A]"
         />
 
         <button
           onClick={submit}
           disabled={loading}
-          className="mt-5 w-full rounded-xl bg-[#1F4D3A] py-3 text-sm font-extrabold text-white disabled:opacity-60"
+          className="mt-5 w-full rounded-xl bg-[#14532D] py-3 text-sm font-extrabold text-white disabled:opacity-60"
         >
           {loading ? "…" : isLogin ? t(lang, "login") : t(lang, "register")}
         </button>
         <button
           onClick={google}
           disabled={loading}
-          className="mt-2.5 flex w-full items-center justify-center gap-2 rounded-xl border border-[#DED7C4] bg-white py-3 text-sm font-bold text-[#1F2A21] hover:bg-[#F4F1E8] disabled:opacity-60"
+          className="mt-2.5 flex w-full items-center justify-center gap-2 rounded-xl border border-[#E5DDCB] bg-white py-3 text-sm font-bold text-[#17251C] hover:bg-[#F7F3EA] disabled:opacity-60"
         >
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-base font-black text-[#4285F4]">
             G
@@ -215,7 +215,7 @@ export default function LoginDialog({
             setIsLogin((v) => !v);
             setError(null);
           }}
-          className="mt-4 w-full text-center text-xs font-bold text-[#2F7D4F]"
+          className="mt-4 w-full text-center text-xs font-bold text-[#1B6B3A]"
         >
           {isLogin
             ? t(lang, "no_account_register")

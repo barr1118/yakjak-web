@@ -28,19 +28,19 @@ export default function ProfilePage() {
   const [editOpen, setEditOpen] = useState(false);
 
   if (authLoading) {
-    return <div className="py-20 text-center text-[#5D6F61]">…</div>;
+    return <div className="py-20 text-center text-[#5B6B5F]">…</div>;
   }
 
   if (!user) {
     return (
       <div className="flex flex-col items-center py-16 text-center">
-        <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-[#E3ECD9]">
-          <UserIcon className="h-10 w-10 text-[#1F4D3A]" />
+        <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-[#E8F0E4]">
+          <UserIcon className="h-10 w-10 text-[#14532D]" />
         </div>
-        <h1 className="mt-4 font-[family-name:var(--font-fraunces)] text-3xl font-semibold text-[#1F2A21]">
+        <h1 className="mt-4 font-[family-name:var(--font-fraunces)] text-3xl font-semibold text-[#17251C]">
           {t(lang, "nav_profile")}
         </h1>
-        <p className="mt-2 max-w-sm text-sm text-[#5D6F61]">
+        <p className="mt-2 max-w-sm text-sm text-[#5B6B5F]">
           {t(lang, "login_to_view_profile")}
         </p>
         {authError && (
@@ -51,13 +51,13 @@ export default function ProfilePage() {
         <div className="mt-5 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => setLoginOpen(true)}
-            className="rounded-full bg-[#1F4D3A] px-5 py-2.5 text-xs font-extrabold text-white"
+            className="rounded-full bg-[#14532D] px-5 py-2.5 text-xs font-extrabold text-white"
           >
             {t(lang, "login")}
           </button>
           <button
             onClick={() => demo.signInDemo("traveler")}
-            className="rounded-full border border-[#DED7C4] px-5 py-2.5 text-xs font-extrabold text-[#1F4D3A]"
+            className="rounded-full border border-[#E5DDCB] px-5 py-2.5 text-xs font-extrabold text-[#14532D]"
           >
             {t(lang, "demo_traveler")}
           </button>
@@ -76,7 +76,7 @@ export default function ProfilePage() {
 
   return (
     <div>
-      <section className="overflow-hidden rounded-[28px] bg-[#1F4D3A] text-white">
+      <section className="overflow-hidden rounded-[28px] bg-[#14532D] text-white">
         <div className="p-6 sm:p-8">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
             <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-3xl bg-white/10 text-2xl font-black">
@@ -92,11 +92,11 @@ export default function ProfilePage() {
                 <h1 className="truncate font-[family-name:var(--font-fraunces)] text-3xl font-semibold">
                   {user.displayName ?? t(lang, "guest")}
                 </h1>
-                <span className="rounded-full bg-white/10 px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.1em] text-[#D9C68A]">
+                <span className="rounded-full bg-white/10 px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.1em] text-[#F0D9A8]">
                   {t(lang, roleKey(user.role))}
                 </span>
                 {user.isDemo && (
-                  <span className="rounded-full bg-[#F4E2D4] px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.1em] text-[#B54708]">
+                  <span className="rounded-full bg-[#F5E2D5] px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.1em] text-[#C2410C]">
                     {t(lang, "demo_mode")}
                   </span>
                 )}
@@ -169,18 +169,18 @@ export default function ProfilePage() {
 
       <section className="mt-8">
         <div className="flex items-end justify-between gap-3">
-          <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#1F2A21]">
+          <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#17251C]">
             {t(lang, "favorite_places")}
           </h2>
           <Link
             href="/"
-            className="text-[10px] font-extrabold text-[#1F4D3A] hover:underline"
+            className="text-[10px] font-extrabold text-[#14532D] hover:underline"
           >
             + {t(lang, "nav_explore")}
           </Link>
         </div>
         {favoriteList.length === 0 ? (
-          <p className="mt-3 rounded-2xl border border-dashed border-[#DED7C4] bg-white p-6 text-center text-xs text-[#9A8F7B]">
+          <p className="mt-3 rounded-2xl border border-dashed border-[#E5DDCB] bg-white p-6 text-center text-xs text-[#7C6C58]">
             {t(lang, "no_favorites")}
           </p>
         ) : (
@@ -190,7 +190,7 @@ export default function ProfilePage() {
                 <Link
                   key={p.name}
                   href={`/place/${p.slug}`}
-                  className="flex items-center gap-3 rounded-2xl border border-[#DED7C4] bg-white p-2.5 hover:border-[#2F7D4F]/50"
+                  className="flex items-center gap-3 rounded-2xl border border-[#E5DDCB] bg-white p-2.5 hover:border-[#1B6B3A]/50"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -199,10 +199,10 @@ export default function ProfilePage() {
                     className="h-14 w-14 rounded-xl object-cover"
                   />
                   <div className="min-w-0">
-                    <div className="truncate text-sm font-extrabold text-[#1F2A21]">
+                    <div className="truncate text-sm font-extrabold text-[#17251C]">
                       {p.name}
                     </div>
-                    <div className="truncate text-[10px] text-[#5D6F61]">
+                    <div className="truncate text-[10px] text-[#5B6B5F]">
                       {p.region} · {t(lang, p.category)}
                     </div>
                   </div>
@@ -213,28 +213,28 @@ export default function ProfilePage() {
         )}
       </section>
 
-      <section className="mt-8 rounded-2xl border border-[#DED7C4] bg-white p-5">
-        <h2 className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#5D6F61]">
+      <section className="mt-8 rounded-2xl border border-[#E5DDCB] bg-white p-5">
+        <h2 className="text-xs font-extrabold uppercase tracking-[0.14em] text-[#5B6B5F]">
           {lang === "id" ? "Pengaturan" : "Settings"}
         </h2>
         <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className="text-sm font-extrabold text-[#1F2A21]">
+            <p className="text-sm font-extrabold text-[#17251C]">
               {lang === "id" ? "Bahasa aplikasi" : "App language"}
             </p>
-            <p className="text-[10px] text-[#9A8F7B]">
+            <p className="text-[10px] text-[#7C6C58]">
               {lang === "id" ? "Indonesia / English" : "Indonesian / English"}
             </p>
           </div>
           <LangSwitch lang={lang} setLang={setLang} />
         </div>
         {user.isDemo && (
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-[#EDE7D8] pt-4">
+          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 border-t border-[#F1EADD] pt-4">
             <div>
-              <p className="text-sm font-extrabold text-[#1F2A21]">
+              <p className="text-sm font-extrabold text-[#17251C]">
                 {lang === "id" ? "Reset data demo" : "Reset demo data"}
               </p>
-              <p className="text-[10px] text-[#9A8F7B]">
+              <p className="text-[10px] text-[#7C6C58]">
                 {lang === "id"
                   ? "Kembalikan pesanan dan ulasan ke data awal."
                   : "Restore bookings and reviews to the seed data."}
@@ -244,7 +244,7 @@ export default function ProfilePage() {
               onClick={() => {
                 if (window.confirm("Reset data demo?")) resetDemo();
               }}
-              className="rounded-full border border-[#DED7C4] px-4 py-2 text-[10px] font-extrabold text-[#5D6F61] hover:border-[#B42318] hover:text-[#B42318]"
+              className="rounded-full border border-[#E5DDCB] px-4 py-2 text-[10px] font-extrabold text-[#5B6B5F] hover:border-[#B42318] hover:text-[#B42318]"
             >
               {lang === "id" ? "Reset" : "Reset"}
             </button>
@@ -293,12 +293,12 @@ function QuickLink({
   return (
     <Link
       href={href}
-      className="group rounded-2xl border border-[#DED7C4] bg-white p-4 transition-all hover:-translate-y-0.5 hover:border-[#2F7D4F]/40 hover:shadow-sm"
+      className="group rounded-2xl border border-[#E5DDCB] bg-white p-4 transition-all hover:-translate-y-0.5 hover:border-[#1B6B3A]/40 hover:shadow-sm"
     >
       <span className="text-xl">{icon}</span>
-      <p className="mt-2 text-sm font-extrabold text-[#1F2A21]">{title}</p>
-      <p className="mt-0.5 text-[10px] leading-snug text-[#5D6F61]">{body}</p>
-      <span className="mt-2 inline-block text-[10px] font-extrabold text-[#1F4D3A] group-hover:underline">
+      <p className="mt-2 text-sm font-extrabold text-[#17251C]">{title}</p>
+      <p className="mt-0.5 text-[10px] leading-snug text-[#5B6B5F]">{body}</p>
+      <span className="mt-2 inline-block text-[10px] font-extrabold text-[#14532D] group-hover:underline">
         →
       </span>
     </Link>
@@ -321,17 +321,17 @@ function EditNameDialog({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/70" onClick={onClose} />
-      <div className="relative w-full max-w-sm rounded-2xl border border-[#DED7C4] bg-white p-6">
-        <h2 className="text-lg font-extrabold text-[#1F2A21]">
+      <div className="relative w-full max-w-sm rounded-2xl border border-[#E5DDCB] bg-white p-6">
+        <h2 className="text-lg font-extrabold text-[#17251C]">
           {t(lang, "edit_username")}
         </h2>
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="mt-4 w-full rounded-xl border border-[#DED7C4] bg-[#F7F4EC] px-3 py-2.5 text-sm outline-none focus:border-[#2F7D4F]"
+          className="mt-4 w-full rounded-xl border border-[#E5DDCB] bg-[#FAF7EF] px-3 py-2.5 text-sm outline-none focus:border-[#1B6B3A]"
         />
         <div className="mt-5 flex justify-end gap-3">
-          <button onClick={onClose} className="text-xs font-bold text-[#5D6F61]">
+          <button onClick={onClose} className="text-xs font-bold text-[#5B6B5F]">
             {t(lang, "cancel")}
           </button>
           <button
@@ -344,7 +344,7 @@ function EditNameDialog({
                 setSaving(false);
               }
             }}
-            className="rounded-full bg-[#1F4D3A] px-4 py-2 text-xs font-extrabold text-white disabled:opacity-50"
+            className="rounded-full bg-[#14532D] px-4 py-2 text-xs font-extrabold text-white disabled:opacity-50"
           >
             {t(lang, "save")}
           </button>

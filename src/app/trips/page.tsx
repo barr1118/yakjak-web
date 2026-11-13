@@ -13,11 +13,11 @@ import type { Booking, BookingStatus } from "@/lib/types";
 import LoginDialog from "@/components/LoginDialog";
 
 const STATUS_STYLE: Record<BookingStatus, string> = {
-  requested: "bg-[#FDF0E3] text-[#B54708] border-[#E7C9A0]",
-  confirmed: "bg-[#E3ECD9] text-[#1F4D3A] border-[#C9D9BE]",
+  requested: "bg-[#FBE9DD] text-[#C2410C] border-[#EBD3B4]",
+  confirmed: "bg-[#E8F0E4] text-[#14532D] border-[#D5E3CC]",
   declined: "bg-[#F7D7D3] text-[#B42318] border-[#E89B93]",
-  completed: "bg-[#E7E0CC] text-[#5D6F61] border-[#D9D2BD]",
-  cancelled: "bg-[#F1EBDA] text-[#9A8F7B] border-[#DED7C4]",
+  completed: "bg-[#ECE5D6] text-[#5B6B5F] border-[#E2DAC8]",
+  cancelled: "bg-[#F3EEE2] text-[#7C6C58] border-[#E5DDCB]",
 };
 
 function statusKey(s: BookingStatus) {
@@ -32,14 +32,14 @@ export default function TripsPage() {
 
   if (!user) {
     return (
-      <div className="rounded-[28px] border border-[#DED7C4] bg-white p-8 text-center sm:p-12">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E3ECD9] text-2xl">
+      <div className="rounded-[28px] border border-[#E5DDCB] bg-white p-8 text-center sm:p-12">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E8F0E4] text-2xl">
           🎒
         </div>
-        <h1 className="mt-4 font-[family-name:var(--font-fraunces)] text-3xl font-semibold text-[#1F2A21]">
+        <h1 className="mt-4 font-[family-name:var(--font-fraunces)] text-3xl font-semibold text-[#17251C]">
           {t(lang, "trips_title")}
         </h1>
-        <p className="mx-auto mt-2 max-w-sm text-sm text-[#5D6F61]">
+        <p className="mx-auto mt-2 max-w-sm text-sm text-[#5B6B5F]">
           {lang === "id"
             ? "Masuk untuk melihat pesanan, trip pack offline, dan riwayat ekspedisi. Atau coba mode demo tanpa daftar."
             : "Sign in to see bookings, offline trip packs, and expedition history. Or try demo mode without registering."}
@@ -47,7 +47,7 @@ export default function TripsPage() {
         <div className="mt-5 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => setLoginOpen(true)}
-            className="rounded-full bg-[#1F4D3A] px-5 py-2.5 text-xs font-extrabold text-white"
+            className="rounded-full bg-[#14532D] px-5 py-2.5 text-xs font-extrabold text-white"
           >
             {t(lang, "login")}
           </button>
@@ -55,7 +55,7 @@ export default function TripsPage() {
             onClick={() => {
               demo.signInDemo("traveler");
             }}
-            className="rounded-full border border-[#DED7C4] px-5 py-2.5 text-xs font-extrabold text-[#1F4D3A]"
+            className="rounded-full border border-[#E5DDCB] px-5 py-2.5 text-xs font-extrabold text-[#14532D]"
           >
             {t(lang, "demo_traveler")}
           </button>
@@ -83,13 +83,13 @@ export default function TripsPage() {
 
   return (
     <div>
-      <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#B54708]">
+      <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#C2410C]">
         {t(lang, "nav_trips")}
       </p>
-      <h1 className="mt-1.5 font-[family-name:var(--font-fraunces)] text-4xl font-semibold tracking-tight text-[#1F2A21]">
+      <h1 className="mt-1.5 font-[family-name:var(--font-fraunces)] text-4xl font-semibold tracking-tight text-[#17251C]">
         {t(lang, "trips_title")}
       </h1>
-      <p className="mt-1 max-w-xl text-sm text-[#5D6F61]">
+      <p className="mt-1 max-w-xl text-sm text-[#5B6B5F]">
         {t(lang, "trips_subtitle")}
       </p>
 
@@ -101,12 +101,12 @@ export default function TripsPage() {
 
       <section className="mt-8">
         <div className="flex items-end justify-between gap-3">
-          <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#1F2A21]">
+          <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#17251C]">
             {t(lang, "trips_upcoming")}
           </h2>
           <Link
             href="/providers"
-            className="text-[10px] font-extrabold text-[#1F4D3A] hover:underline"
+            className="text-[10px] font-extrabold text-[#14532D] hover:underline"
           >
             + {t(lang, "book_now")}
           </Link>
@@ -128,7 +128,7 @@ export default function TripsPage() {
       </section>
 
       <section className="mt-8">
-        <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#1F2A21]">
+        <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#17251C]">
           {t(lang, "trips_offline")}
         </h2>
         {packs.length === 0 ? (
@@ -139,7 +139,7 @@ export default function TripsPage() {
               p ? (
                 <div
                   key={p.slug}
-                  className="flex overflow-hidden rounded-2xl border border-[#DED7C4] bg-white"
+                  className="flex overflow-hidden rounded-2xl border border-[#E5DDCB] bg-white"
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
@@ -149,23 +149,23 @@ export default function TripsPage() {
                   />
                   <div className="flex min-w-0 flex-1 flex-col justify-between p-3">
                     <div>
-                      <h3 className="truncate text-sm font-extrabold text-[#1F2A21]">
+                      <h3 className="truncate text-sm font-extrabold text-[#17251C]">
                         {p.name}
                       </h3>
-                      <p className="text-[10px] text-[#5D6F61]">
+                      <p className="text-[10px] text-[#5B6B5F]">
                         {p.region} · {p.distance} km
                       </p>
                     </div>
                     <div className="flex items-center justify-between gap-2">
                       <Link
                         href={`/place/${p.slug}`}
-                        className="text-[10px] font-extrabold text-[#1F4D3A] hover:underline"
+                        className="text-[10px] font-extrabold text-[#14532D] hover:underline"
                       >
                         {t(lang, "pack_ready")} →
                       </Link>
                       <button
                         onClick={() => removeTripPack(p)}
-                        className="text-[9px] font-bold text-[#9A8F7B] hover:text-[#B42318]"
+                        className="text-[9px] font-bold text-[#7C6C58] hover:text-[#B42318]"
                       >
                         {t(lang, "remove_pack")}
                       </button>
@@ -179,7 +179,7 @@ export default function TripsPage() {
       </section>
 
       <section className="mt-8">
-        <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#1F2A21]">
+        <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#17251C]">
           {t(lang, "trips_history")}
         </h2>
         {trips.length === 0 ? (
@@ -189,13 +189,13 @@ export default function TripsPage() {
             {trips.map((tr) => (
               <div
                 key={tr.id}
-                className="flex items-center justify-between gap-3 rounded-2xl border border-[#DED7C4] bg-white px-4 py-3"
+                className="flex items-center justify-between gap-3 rounded-2xl border border-[#E5DDCB] bg-white px-4 py-3"
               >
                 <div>
-                  <p className="text-sm font-extrabold text-[#1F2A21]">
+                  <p className="text-sm font-extrabold text-[#17251C]">
                     {tr.placeName}
                   </p>
-                  <p className="text-[10px] text-[#5D6F61]">
+                  <p className="text-[10px] text-[#5B6B5F]">
                     {new Date(tr.completedAt).toLocaleDateString(
                       lang === "id" ? "id-ID" : "en-GB",
                       { day: "numeric", month: "short", year: "numeric" },
@@ -206,13 +206,13 @@ export default function TripsPage() {
                 <div className="flex items-center gap-3">
                   <Link
                     href={`/place/${tr.placeSlug}`}
-                    className="text-[10px] font-extrabold text-[#1F4D3A] hover:underline"
+                    className="text-[10px] font-extrabold text-[#14532D] hover:underline"
                   >
                     {t(lang, "view_profile")}
                   </Link>
                   <button
                     onClick={() => demo.deleteTrip(tr.id)}
-                    className="text-[10px] font-bold text-[#9A8F7B] hover:text-[#B42318]"
+                    className="text-[10px] font-bold text-[#7C6C58] hover:text-[#B42318]"
                   >
                     ✕
                   </button>
@@ -225,7 +225,7 @@ export default function TripsPage() {
 
       {past.length > 0 && (
         <section className="mt-8">
-          <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#1F2A21]">
+          <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#17251C]">
             {lang === "id" ? "Pesanan lampau" : "Past bookings"}
           </h2>
           <div className="mt-3 space-y-3">
@@ -241,11 +241,11 @@ export default function TripsPage() {
 
 function Stat({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-2xl border border-[#DED7C4] bg-white px-3 py-3 text-center">
-      <div className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#1F4D3A]">
+    <div className="rounded-2xl border border-[#E5DDCB] bg-white px-3 py-3 text-center">
+      <div className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#14532D]">
         {value}
       </div>
-      <div className="text-[9px] font-extrabold uppercase tracking-[0.12em] text-[#9A8F7B]">
+      <div className="text-[9px] font-extrabold uppercase tracking-[0.12em] text-[#7C6C58]">
         {label}
       </div>
     </div>
@@ -254,7 +254,7 @@ function Stat({ value, label }: { value: string; label: string }) {
 
 function Empty({ text }: { text: string }) {
   return (
-    <div className="mt-3 rounded-2xl border border-dashed border-[#DED7C4] bg-white p-6 text-center text-xs text-[#9A8F7B]">
+    <div className="mt-3 rounded-2xl border border-dashed border-[#E5DDCB] bg-white p-6 text-center text-xs text-[#7C6C58]">
       {text}
     </div>
   );
@@ -279,16 +279,16 @@ function BookingRow({
 
   return (
     <div
-      className={`rounded-2xl border border-[#DED7C4] bg-white p-4 ${
+      className={`rounded-2xl border border-[#E5DDCB] bg-white p-4 ${
         muted ? "opacity-75" : ""
       }`}
     >
       <div className="flex flex-wrap items-start justify-between gap-2">
         <div>
-          <p className="text-sm font-extrabold text-[#1F2A21]">
+          <p className="text-sm font-extrabold text-[#17251C]">
             {provider?.name ?? booking.providerId}
           </p>
-          <p className="mt-0.5 text-[10px] text-[#5D6F61]">
+          <p className="mt-0.5 text-[10px] text-[#5B6B5F]">
             {offering?.title ?? booking.offeringId} · {dest?.name ?? booking.destinationSlug}
           </p>
         </div>
@@ -298,7 +298,7 @@ function BookingRow({
           {t(lang, statusKey(booking.status))}
         </span>
       </div>
-      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] text-[#5D6F61]">
+      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] text-[#5B6B5F]">
         <span>
           {t(lang, "booking_date")}:{" "}
           {new Date(booking.date).toLocaleDateString(
@@ -309,12 +309,12 @@ function BookingRow({
         <span>
           {t(lang, "booking_pax")}: {booking.pax}
         </span>
-        <span className="font-extrabold text-[#1F4D3A]">
+        <span className="font-extrabold text-[#14532D]">
           {formatRupiah(booking.totalPrice)}
         </span>
       </div>
       {booking.providerNote && (
-        <p className="mt-2 rounded-lg bg-[#F1EBDA] px-2.5 py-1.5 text-[10px] text-[#5D6F61]">
+        <p className="mt-2 rounded-lg bg-[#F3EEE2] px-2.5 py-1.5 text-[10px] text-[#5B6B5F]">
           {t(lang, "booking_provider_note")}: {booking.providerNote}
         </p>
       )}
@@ -322,7 +322,7 @@ function BookingRow({
         <div className="mt-3 flex justify-end">
           <button
             onClick={onCancel}
-            className="rounded-full border border-[#DED7C4] px-3 py-1.5 text-[9px] font-bold text-[#5D6F61] hover:border-[#B42318] hover:text-[#B42318]"
+            className="rounded-full border border-[#E5DDCB] px-3 py-1.5 text-[9px] font-bold text-[#5B6B5F] hover:border-[#B42318] hover:text-[#B42318]"
           >
             {lang === "id" ? "Batalkan" : "Cancel"}
           </button>

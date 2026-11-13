@@ -23,14 +23,14 @@ export default function ProviderDashboard() {
 
   if (!user || (user.role !== "provider" && user.role !== "admin")) {
     return (
-      <div className="rounded-[28px] border border-[#DED7C4] bg-white p-8 text-center sm:p-12">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E3ECD9] text-2xl">
+      <div className="rounded-[28px] border border-[#E5DDCB] bg-white p-8 text-center sm:p-12">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-[#E8F0E4] text-2xl">
           📋
         </div>
-        <h1 className="mt-4 font-[family-name:var(--font-fraunces)] text-3xl font-semibold text-[#1F2A21]">
+        <h1 className="mt-4 font-[family-name:var(--font-fraunces)] text-3xl font-semibold text-[#17251C]">
           {t(lang, "provider_dashboard")}
         </h1>
-        <p className="mx-auto mt-2 max-w-md text-sm text-[#5D6F61]">
+        <p className="mx-auto mt-2 max-w-md text-sm text-[#5B6B5F]">
           {lang === "id"
             ? "Halaman ini untuk penyedia terverifikasi. Coba akun demo provider untuk melihat permintaan masuk dan status listing."
             : "This page is for verified providers. Try the demo provider account to see incoming requests and listing status."}
@@ -38,13 +38,13 @@ export default function ProviderDashboard() {
         <div className="mt-5 flex flex-wrap justify-center gap-2">
           <button
             onClick={() => setLoginOpen(true)}
-            className="rounded-full bg-[#1F4D3A] px-5 py-2.5 text-xs font-extrabold text-white"
+            className="rounded-full bg-[#14532D] px-5 py-2.5 text-xs font-extrabold text-white"
           >
             {t(lang, "login")}
           </button>
           <button
             onClick={() => demo.signInDemo("provider")}
-            className="rounded-full border border-[#DED7C4] px-5 py-2.5 text-xs font-extrabold text-[#1F4D3A]"
+            className="rounded-full border border-[#E5DDCB] px-5 py-2.5 text-xs font-extrabold text-[#14532D]"
           >
             {t(lang, "demo_provider")}
           </button>
@@ -59,15 +59,15 @@ export default function ProviderDashboard() {
 
   if (!provider) {
     return (
-      <div className="rounded-2xl border border-dashed border-[#DED7C4] bg-white p-10 text-center">
-        <p className="text-sm text-[#5D6F61]">
+      <div className="rounded-2xl border border-dashed border-[#E5DDCB] bg-white p-10 text-center">
+        <p className="text-sm text-[#5B6B5F]">
           {lang === "id"
             ? "Akun ini belum terhubung ke profil penyedia."
             : "This account is not linked to a provider profile."}
         </p>
         <Link
           href="/providers"
-          className="mt-3 inline-block text-xs font-extrabold text-[#1F4D3A] hover:underline"
+          className="mt-3 inline-block text-xs font-extrabold text-[#14532D] hover:underline"
         >
           {t(lang, "providers_title")} →
         </Link>
@@ -96,13 +96,13 @@ export default function ProviderDashboard() {
     <div>
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#B54708]">
+          <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#C2410C]">
             {t(lang, "provider_dashboard")}
           </p>
-          <h1 className="mt-1.5 font-[family-name:var(--font-fraunces)] text-4xl font-semibold tracking-tight text-[#1F2A21]">
+          <h1 className="mt-1.5 font-[family-name:var(--font-fraunces)] text-4xl font-semibold tracking-tight text-[#17251C]">
             {provider.name}
           </h1>
-          <p className="mt-1 text-xs text-[#5D6F61]">
+          <p className="mt-1 text-xs text-[#5B6B5F]">
             {provider.verified
               ? t(lang, "provider_verified")
               : t(lang, "provider_unverified")}{" "}
@@ -112,7 +112,7 @@ export default function ProviderDashboard() {
         {user.role === "admin" && (
           <Link
             href="/admin"
-            className="rounded-full bg-[#1F4D3A] px-4 py-2 text-xs font-extrabold text-white"
+            className="rounded-full bg-[#14532D] px-4 py-2 text-xs font-extrabold text-white"
           >
             {t(lang, "admin_title")} →
           </Link>
@@ -126,11 +126,11 @@ export default function ProviderDashboard() {
       </div>
 
       <section className="mt-8">
-        <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#1F2A21]">
+        <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#17251C]">
           {t(lang, "requests")}
         </h2>
         {bookings.length === 0 ? (
-          <p className="mt-3 rounded-2xl border border-dashed border-[#DED7C4] bg-white p-6 text-center text-xs text-[#9A8F7B]">
+          <p className="mt-3 rounded-2xl border border-dashed border-[#E5DDCB] bg-white p-6 text-center text-xs text-[#7C6C58]">
             {t(lang, "no_requests")}
           </p>
         ) : (
@@ -142,25 +142,25 @@ export default function ProviderDashboard() {
               return (
                 <div
                   key={b.id}
-                  className="rounded-2xl border border-[#DED7C4] bg-white p-4"
+                  className="rounded-2xl border border-[#E5DDCB] bg-white p-4"
                 >
                   <div className="flex flex-wrap items-start justify-between gap-2">
                     <div>
-                      <p className="text-sm font-extrabold text-[#1F2A21]">
+                      <p className="text-sm font-extrabold text-[#17251C]">
                         {b.travelerName}
                       </p>
-                      <p className="mt-0.5 text-[10px] text-[#5D6F61]">
+                      <p className="mt-0.5 text-[10px] text-[#5B6B5F]">
                         {offering?.title ?? b.offeringId} · {dest?.name ?? b.destinationSlug}
                       </p>
                     </div>
                     <Status status={b.status} lang={lang} />
                   </div>
-                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[10px] text-[#5D6F61]">
+                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[10px] text-[#5B6B5F]">
                     <span>{b.date}</span>
                     <span>
                       {t(lang, "booking_pax")}: {b.pax}
                     </span>
-                    <span className="font-extrabold text-[#1F4D3A]">
+                    <span className="font-extrabold text-[#14532D]">
                       {formatRupiah(b.totalPrice)}
                     </span>
                     <span>
@@ -168,7 +168,7 @@ export default function ProviderDashboard() {
                     </span>
                   </div>
                   {b.notes && (
-                    <p className="mt-2 rounded-lg bg-[#F7F4EC] px-2.5 py-1.5 text-[10px] text-[#5D6F61]">
+                    <p className="mt-2 rounded-lg bg-[#FAF7EF] px-2.5 py-1.5 text-[10px] text-[#5B6B5F]">
                       “{b.notes}”
                     </p>
                   )}
@@ -182,14 +182,14 @@ export default function ProviderDashboard() {
                       </button>
                       <button
                         onClick={() => decide(b, "confirmed")}
-                        className="rounded-full bg-[#1F4D3A] px-3 py-1.5 text-[10px] font-extrabold text-white hover:bg-[#2F7D4F]"
+                        className="rounded-full bg-[#14532D] px-3 py-1.5 text-[10px] font-extrabold text-white hover:bg-[#1B6B3A]"
                       >
                         {t(lang, "confirm")}
                       </button>
                     </div>
                   )}
                   {b.providerNote && (
-                    <p className="mt-2 text-[9px] italic text-[#9A8F7B]">
+                    <p className="mt-2 text-[9px] italic text-[#7C6C58]">
                       {t(lang, "booking_provider_note")}: {b.providerNote}
                     </p>
                   )}
@@ -202,12 +202,12 @@ export default function ProviderDashboard() {
 
       <section className="mt-8">
         <div className="flex items-end justify-between gap-3">
-          <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#1F2A21]">
+          <h2 className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#17251C]">
             {t(lang, "listing")}
           </h2>
           <Link
             href={`/providers/${provider.id}`}
-            className="text-[10px] font-extrabold text-[#1F4D3A] hover:underline"
+            className="text-[10px] font-extrabold text-[#14532D] hover:underline"
           >
             {t(lang, "view_profile")} →
           </Link>
@@ -216,22 +216,22 @@ export default function ProviderDashboard() {
           {offerings.map((o) => (
             <div
               key={o.id}
-              className="rounded-2xl border border-[#DED7C4] bg-white p-4"
+              className="rounded-2xl border border-[#E5DDCB] bg-white p-4"
             >
               <div className="flex items-start justify-between gap-2">
                 <div>
-                  <p className="text-sm font-extrabold text-[#1F2A21]">
+                  <p className="text-sm font-extrabold text-[#17251C]">
                     {o.title}
                   </p>
-                  <p className="mt-0.5 text-[10px] text-[#5D6F61]">
+                  <p className="mt-0.5 text-[10px] text-[#5B6B5F]">
                     {places.find((p) => p.slug === o.destinationSlug)?.name}
                   </p>
                 </div>
-                <span className="text-sm font-black text-[#1F4D3A]">
+                <span className="text-sm font-black text-[#14532D]">
                   {formatRupiah(o.price)}
                 </span>
               </div>
-              <p className="mt-2 text-[10px] text-[#9A8F7B]">
+              <p className="mt-2 text-[10px] text-[#7C6C58]">
                 {t(lang, "capacity")} {o.capacity} · /{o.unit}
               </p>
             </div>
@@ -244,11 +244,11 @@ export default function ProviderDashboard() {
 
 function Stat({ value, label }: { value: string; label: string }) {
   return (
-    <div className="rounded-2xl border border-[#DED7C4] bg-white px-3 py-3 text-center">
-      <div className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#1F4D3A]">
+    <div className="rounded-2xl border border-[#E5DDCB] bg-white px-3 py-3 text-center">
+      <div className="font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#14532D]">
         {value}
       </div>
-      <div className="text-[9px] font-extrabold uppercase tracking-[0.12em] text-[#9A8F7B]">
+      <div className="text-[9px] font-extrabold uppercase tracking-[0.12em] text-[#7C6C58]">
         {label}
       </div>
     </div>
@@ -258,12 +258,12 @@ function Stat({ value, label }: { value: string; label: string }) {
 function Status({ status, lang }: { status: Booking["status"]; lang: "id" | "en" }) {
   const style =
     status === "requested"
-      ? "bg-[#FDF0E3] text-[#B54708] border-[#E7C9A0]"
+      ? "bg-[#FBE9DD] text-[#C2410C] border-[#EBD3B4]"
       : status === "confirmed"
-        ? "bg-[#E3ECD9] text-[#1F4D3A] border-[#C9D9BE]"
+        ? "bg-[#E8F0E4] text-[#14532D] border-[#D5E3CC]"
         : status === "declined"
           ? "bg-[#F7D7D3] text-[#B42318] border-[#E89B93]"
-          : "bg-[#F1EBDA] text-[#9A8F7B] border-[#DED7C4]";
+          : "bg-[#F3EEE2] text-[#7C6C58] border-[#E5DDCB]";
   return (
     <span
       className={`rounded-full border px-2.5 py-1 text-[9px] font-extrabold uppercase tracking-[0.08em] ${style}`}

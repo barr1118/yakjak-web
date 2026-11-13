@@ -55,7 +55,7 @@ export default function WeatherCard({
 
   if (failed) {
     return (
-      <div className="rounded-2xl border border-[#DED7C4] bg-white px-4 py-3 text-[11px] text-[#5D6F61]">
+      <div className="rounded-2xl border border-[#E5DDCB] bg-white px-4 py-3 text-[11px] text-[#5B6B5F]">
         {lang === "id"
           ? "Data cuaca belum tersedia. Cek lagi saat online."
           : "Weather data is not available. Check again when online."}
@@ -65,12 +65,12 @@ export default function WeatherCard({
 
   if (!data) {
     return (
-      <div className="animate-pulse rounded-2xl border border-[#D9D2BD] bg-[#FFFFFF] p-5 shadow-sm">
-        <div className="h-5 w-32 rounded bg-[#E7E0CC]" />
-        <div className="mt-3 h-10 w-48 rounded bg-[#E7E0CC]" />
+      <div className="animate-pulse rounded-2xl border border-[#E2DAC8] bg-[#FFFFFF] p-5 shadow-sm">
+        <div className="h-5 w-32 rounded bg-[#ECE5D6]" />
+        <div className="mt-3 h-10 w-48 rounded bg-[#ECE5D6]" />
         <div className="mt-3 grid grid-cols-4 gap-2">
           {[0, 1, 2, 3].map((i) => (
-            <div key={i} className="h-12 rounded-lg bg-[#E7E0CC]" />
+            <div key={i} className="h-12 rounded-lg bg-[#ECE5D6]" />
           ))}
         </div>
       </div>
@@ -81,21 +81,21 @@ export default function WeatherCard({
   const bad = isBadHikingWeather(data);
 
   return (
-    <div className="rounded-2xl border border-[#D9D2BD] bg-[#FFFFFF] p-5 shadow-sm">
+    <div className="rounded-2xl border border-[#E2DAC8] bg-[#FFFFFF] p-5 shadow-sm">
       <div className="flex items-center gap-4">
         <span className="text-5xl">{cur.emoji}</span>
         <div>
-          <div className="text-4xl font-black tracking-tight text-[#1F2A21]">
+          <div className="text-4xl font-black tracking-tight text-[#17251C]">
             {Math.round(data.current.temp)}°C
           </div>
-          <div className="text-sm font-bold text-[#1F2A21]">{cur.label}</div>
-          <div className="text-xs text-[#5D6F61]">
+          <div className="text-sm font-bold text-[#17251C]">{cur.label}</div>
+          <div className="text-xs text-[#5B6B5F]">
             {t(lang, "weather_feels")} {Math.round(data.current.feelsLike)}°C
           </div>
         </div>
         <div
           className={`ml-auto rounded-full px-3 py-1 text-[11px] font-extrabold ${
-            bad ? "bg-[#F7D7D3] text-[#B42318]" : "bg-[#E2EFE0] text-[#2F7D4F]"
+            bad ? "bg-[#F7D7D3] text-[#B42318]" : "bg-[#E8F0E4] text-[#1B6B3A]"
           }`}
         >
           {bad ? t(lang, "weather_bad") : t(lang, "weather_good")}
@@ -120,8 +120,8 @@ export default function WeatherCard({
         />
       </div>
 
-      <div className="mt-4 border-t border-[#D9D2BD] pt-3">
-        <div className="text-xs font-extrabold uppercase tracking-widest text-[#5D6F61]">
+      <div className="mt-4 border-t border-[#E2DAC8] pt-3">
+        <div className="text-xs font-extrabold uppercase tracking-widest text-[#5B6B5F]">
           {t(lang, "weather_next_days")}
         </div>
         <div className="mt-2 grid grid-cols-4 gap-2">
@@ -130,17 +130,17 @@ export default function WeatherCard({
             return (
               <div
                 key={d.date}
-                className="rounded-xl bg-[#F4F1E8] px-2 py-2.5 text-center"
+                className="rounded-xl bg-[#F7F3EA] px-2 py-2.5 text-center"
               >
-                <div className="text-[11px] font-extrabold text-[#5D6F61]">
+                <div className="text-[11px] font-extrabold text-[#5B6B5F]">
                   {dayLabel(d.date, lang)}
                 </div>
                 <div className="mt-1 text-2xl">{info.emoji}</div>
-                <div className="mt-1 text-xs font-extrabold text-[#1F2A21]">
+                <div className="mt-1 text-xs font-extrabold text-[#17251C]">
                   {Math.round(d.tMax)}° / {Math.round(d.tMin)}°
                 </div>
                 {d.precipProb != null && d.precipProb >= 20 && (
-                  <div className="text-[10px] font-bold text-[#2F7D4F]">
+                  <div className="text-[10px] font-bold text-[#1B6B3A]">
                     💧 {Math.round(d.precipProb)}%
                   </div>
                 )}
@@ -163,10 +163,10 @@ function MiniStat({
   label: string;
 }) {
   return (
-    <div className="rounded-xl bg-[#F4F1E8] px-2 py-2.5">
+    <div className="rounded-xl bg-[#F7F3EA] px-2 py-2.5">
       <div className="text-lg">{icon}</div>
-      <div className="mt-0.5 text-sm font-extrabold text-[#1F2A21]">{value}</div>
-      <div className="text-[10px] font-bold uppercase tracking-wide text-[#5D6F61]">
+      <div className="mt-0.5 text-sm font-extrabold text-[#17251C]">{value}</div>
+      <div className="text-[10px] font-bold uppercase tracking-wide text-[#5B6B5F]">
         {label}
       </div>
     </div>

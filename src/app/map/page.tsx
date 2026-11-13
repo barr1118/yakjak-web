@@ -26,13 +26,13 @@ export default function MapPage() {
 
   return (
     <div>
-      <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#B54708]">
+      <p className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-[#C2410C]">
         {t(lang, "nav_map")}
       </p>
-      <h1 className="mt-1.5 font-[family-name:var(--font-fraunces)] text-4xl font-semibold tracking-tight text-[#1F2A21]">
+      <h1 className="mt-1.5 font-[family-name:var(--font-fraunces)] text-4xl font-semibold tracking-tight text-[#17251C]">
         {t(lang, "map_title")}
       </h1>
-      <p className="mt-1 text-sm text-[#5D6F61]">{t(lang, "map_subtitle")}</p>
+      <p className="mt-1 text-sm text-[#5B6B5F]">{t(lang, "map_subtitle")}</p>
 
       <div className="mt-4">
         <TrekMap
@@ -45,7 +45,7 @@ export default function MapPage() {
         />
       </div>
 
-      <h2 className="mt-8 font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#1F2A21]">
+      <h2 className="mt-8 font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#17251C]">
         {t(lang, "all_places")} ({places.length})
       </h2>
       <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-2">

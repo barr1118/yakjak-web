@@ -47,14 +47,14 @@ export default function TripPackButton({
 
   if (progress) {
     return (
-      <div className="w-full rounded-xl border border-[#C9D9BE] bg-[#EDF3E5] px-3 py-2">
-        <div className="flex items-center justify-between text-[10px] font-extrabold text-[#1F4D3A]">
+      <div className="w-full rounded-xl border border-[#D5E3CC] bg-[#F1F6EC] px-3 py-2">
+        <div className="flex items-center justify-between text-[10px] font-extrabold text-[#14532D]">
           <span>{t(lang, "downloading")}</span>
           <span>{pct}%</span>
         </div>
-        <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-[#C9D9BE]">
+        <div className="mt-1.5 h-1.5 overflow-hidden rounded-full bg-[#D5E3CC]">
           <div
-            className="h-full rounded-full bg-[#2F7D4F] transition-all"
+            className="h-full rounded-full bg-[#1B6B3A] transition-all"
             style={{ width: `${pct}%` }}
           />
         </div>
@@ -65,14 +65,14 @@ export default function TripPackButton({
   if (ready) {
     return (
       <div className="w-full">
-        <div className="flex items-center gap-2 rounded-xl border border-[#C9D9BE] bg-[#EDF3E5] px-3 py-2">
-          <span className="text-sm text-[#1F4D3A]">✓</span>
-          <span className="flex-1 text-[11px] font-extrabold text-[#1F4D3A]">
+        <div className="flex items-center gap-2 rounded-xl border border-[#D5E3CC] bg-[#F1F6EC] px-3 py-2">
+          <span className="text-sm text-[#14532D]">✓</span>
+          <span className="flex-1 text-[11px] font-extrabold text-[#14532D]">
             {t(lang, "pack_ready")}
           </span>
           <button
             onClick={remove}
-            className="text-[10px] font-bold text-[#5D6F61] underline decoration-[#C9D9BE] underline-offset-2 hover:text-[#B42318]"
+            className="text-[10px] font-bold text-[#5B6B5F] underline decoration-[#D5E3CC] underline-offset-2 hover:text-[#B42318]"
           >
             {t(lang, "remove_pack")}
           </button>
@@ -86,7 +86,7 @@ export default function TripPackButton({
     <div className="w-full">
       <button
         onClick={start}
-        className={`flex w-full items-center justify-center gap-2 rounded-xl border border-[#1F4D3A] bg-[#1F4D3A] font-extrabold text-white transition-colors hover:bg-[#2F7D4F] ${
+        className={`flex w-full items-center justify-center gap-2 rounded-xl border border-[#14532D] bg-[#14532D] font-extrabold text-white transition-colors hover:bg-[#1B6B3A] ${
           compact ? "px-3 py-2 text-[10px]" : "px-4 py-3 text-xs"
         }`}
       >
@@ -106,7 +106,7 @@ export default function TripPackButton({
         {t(lang, "download_pack")}
       </button>
       {!compact && (
-        <p className="mt-1.5 text-center text-[9px] leading-snug text-[#9A8F7B]">
+        <p className="mt-1.5 text-center text-[9px] leading-snug text-[#7C6C58]">
           {t(lang, "pack_size")}
         </p>
       )}

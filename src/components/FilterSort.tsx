@@ -28,9 +28,9 @@ export function FilterDialog({
     <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center sm:p-4">
       <div className="absolute inset-0 bg-black/70" onClick={onClose} />
       <div className="relative w-full max-w-md rounded-t-2xl bg-[#FFFFFF] p-6 sm:rounded-2xl">
-        <h2 className="text-xl font-extrabold text-[#1F2A21]">{t(lang, "filter")}</h2>
+        <h2 className="text-xl font-extrabold text-[#17251C]">{t(lang, "filter")}</h2>
 
-        <p className="mt-6 text-sm text-[#5D6F61]">{t(lang, "difficulty")}</p>
+        <p className="mt-6 text-sm text-[#5B6B5F]">{t(lang, "difficulty")}</p>
         <div className="mt-2 flex flex-wrap gap-2">
           {["Easy", "Moderate", "Hard"].map((d) => {
             const selected = tempDiff === d;
@@ -40,8 +40,8 @@ export function FilterDialog({
                 onClick={() => setTempDiff(selected ? null : d)}
                 className={`rounded-full px-4 py-1.5 text-sm font-bold ${
                   selected
-                    ? "bg-[#2F7D4F] text-[#FFFFFF]"
-                    : "bg-[#E7E0CC] text-[#1F2A21]"
+                    ? "bg-[#1B6B3A] text-[#FFFFFF]"
+                    : "bg-[#ECE5D6] text-[#17251C]"
                 }`}
               >
                 {t(lang, d)}
@@ -50,7 +50,7 @@ export function FilterDialog({
           })}
         </div>
 
-        <p className="mt-6 text-sm text-[#5D6F61]">{t(lang, "rating_min")}</p>
+        <p className="mt-6 text-sm text-[#5B6B5F]">{t(lang, "rating_min")}</p>
         <div className="mt-2 flex items-center gap-3">
           <input
             type="range"
@@ -59,9 +59,9 @@ export function FilterDialog({
             step={0.5}
             value={tempRating ?? 1}
             onChange={(e) => setTempRating(parseFloat(e.target.value))}
-            className="w-full accent-[#E05F14]"
+            className="w-full accent-[#C2410C]"
           />
-          <span className="w-10 text-right text-sm font-extrabold text-[#E05F14]">
+          <span className="w-10 text-right text-sm font-extrabold text-[#C2410C]">
             {(tempRating ?? 1).toFixed(1)}
           </span>
         </div>
@@ -72,7 +72,7 @@ export function FilterDialog({
               onApply(null, null);
               onClose();
             }}
-            className="flex-1 rounded-lg border border-[#D9D2BD] py-3 font-bold text-[#1F2A21]"
+            className="flex-1 rounded-lg border border-[#E2DAC8] py-3 font-bold text-[#17251C]"
           >
             {t(lang, "clear")}
           </button>
@@ -81,7 +81,7 @@ export function FilterDialog({
               onApply(tempDiff, tempRating);
               onClose();
             }}
-            className="flex-1 rounded-lg bg-[#2F7D4F] py-3 font-extrabold text-[#FFFFFF]"
+            className="flex-1 rounded-lg bg-[#1B6B3A] py-3 font-extrabold text-[#FFFFFF]"
           >
             {t(lang, "apply")}
           </button>
@@ -124,8 +124,8 @@ export function SortDialog({
       <div className="absolute inset-0 bg-black/70" onClick={onClose} />
       <div className="relative w-full max-w-md rounded-t-2xl bg-[#FFFFFF] p-6 sm:rounded-2xl">
         <div className="flex items-center justify-between">
-          <h2 className="text-xl font-extrabold text-[#1F2A21]">{t(lang, "sort_by")}</h2>
-          <button onClick={onClose} className="text-[#5D6F61] hover:text-[#1F2A21]">
+          <h2 className="text-xl font-extrabold text-[#17251C]">{t(lang, "sort_by")}</h2>
+          <button onClick={onClose} className="text-[#5B6B5F] hover:text-[#17251C]">
             ✕
           </button>
         </div>
@@ -134,7 +134,7 @@ export function SortDialog({
             <label
               key={o.value}
               className={`flex cursor-pointer items-center gap-3 rounded-lg px-2 py-2.5 ${
-                temp === o.value ? "font-extrabold text-[#E05F14]" : "text-[#1F2A21]"
+                temp === o.value ? "font-extrabold text-[#C2410C]" : "text-[#17251C]"
               }`}
             >
               <input
@@ -142,7 +142,7 @@ export function SortDialog({
                 name="sort"
                 checked={temp === o.value}
                 onChange={() => setTemp(o.value)}
-                className="accent-[#E05F14]"
+                className="accent-[#C2410C]"
               />
               {o.label}
             </label>
@@ -154,7 +154,7 @@ export function SortDialog({
               onApply("none");
               onClose();
             }}
-            className="flex-1 rounded-lg border border-[#D9D2BD] py-3 font-bold text-[#1F2A21]"
+            className="flex-1 rounded-lg border border-[#E2DAC8] py-3 font-bold text-[#17251C]"
           >
             {t(lang, "clear")}
           </button>
@@ -163,7 +163,7 @@ export function SortDialog({
               onApply(temp);
               onClose();
             }}
-            className="flex-1 rounded-lg bg-[#E05F14] py-3 font-extrabold text-white"
+            className="flex-1 rounded-lg bg-[#C2410C] py-3 font-extrabold text-white"
           >
             {t(lang, "apply")}
           </button>

@@ -68,7 +68,7 @@ export default function DetailView({ place }: { place: Place }) {
           alt={live.name}
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1F17] via-[#0B1F17]/45 to-[#0B1F17]/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F1C15] via-[#0F1C15]/45 to-[#0F1C15]/10" />
 
         <div className="absolute left-4 top-4 flex gap-2 sm:left-6">
           <Link
@@ -108,7 +108,7 @@ export default function DetailView({ place }: { place: Place }) {
               {live.bestSeason ?? "—"}
             </span>
             <span className="flex items-center gap-1">
-              <span className="text-[#F7D27A]">★</span> {live.rating.toFixed(1)}
+              <span className="text-[#F0D9A8]">★</span> {live.rating.toFixed(1)}
             </span>
             <span>
               {live.distance} {t(lang, "unit_km")} ·{" "}
@@ -128,7 +128,7 @@ export default function DetailView({ place }: { place: Place }) {
             eyebrow={lang === "id" ? "Tentang rute" : "About the route"}
             title={t(lang, "trail_overview")}
           />
-          <p className="mt-3 text-sm leading-relaxed text-[#4D5D51]">
+          <p className="mt-3 text-sm leading-relaxed text-[#4F5F54]">
             {t(lang, live.descriptionKey)}
           </p>
 
@@ -142,7 +142,7 @@ export default function DetailView({ place }: { place: Place }) {
             <Fact label={t(lang, "stat_type")} value={t(lang, live.category)} />
           </div>
 
-          <div className="mt-8 overflow-hidden rounded-2xl border border-[#DED7C4]">
+          <div className="mt-8 overflow-hidden rounded-2xl border border-[#E5DDCB]">
             <TrekMap
               places={[live]}
               center={[live.lat, live.lng]}
@@ -163,16 +163,16 @@ export default function DetailView({ place }: { place: Place }) {
           </div>
 
           {live.adat && (
-            <div className="mt-8 rounded-2xl border border-[#E7C9A0] bg-[#FDF7EC] p-5">
+            <div className="mt-8 rounded-2xl border border-[#EBD3B4] bg-[#FDF8EF] p-5">
               <div className="flex items-center gap-2">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F4E2D4] text-sm text-[#B54708]">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F5E2D5] text-sm text-[#C2410C]">
                   ⚑
                 </span>
                 <div>
-                  <h2 className="text-sm font-extrabold text-[#1F2A21]">
+                  <h2 className="text-sm font-extrabold text-[#17251C]">
                     {t(lang, "adat_title")}
                   </h2>
-                  <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#B54708]">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#C2410C]">
                     {live.adat.authority}
                   </p>
                 </div>
@@ -181,15 +181,15 @@ export default function DetailView({ place }: { place: Place }) {
                 <span
                   className={`rounded-full px-2.5 py-1 text-[10px] font-extrabold ${
                     live.adat.permitRequired
-                      ? "bg-[#F4E2D4] text-[#B54708]"
-                      : "bg-[#E3ECD9] text-[#1F4D3A]"
+                      ? "bg-[#F5E2D5] text-[#C2410C]"
+                      : "bg-[#E8F0E4] text-[#14532D]"
                   }`}
                 >
                   {live.adat.permitRequired
                     ? t(lang, "permit_required")
                     : t(lang, "permit_not_required")}
                 </span>
-                <span className="rounded-full bg-white px-2.5 py-1 text-[10px] font-bold text-[#5D6F61]">
+                <span className="rounded-full bg-white px-2.5 py-1 text-[10px] font-bold text-[#5B6B5F]">
                   {t(lang, "adat_calendar")}: {live.adat.calendarNote}
                 </span>
               </div>
@@ -197,9 +197,9 @@ export default function DetailView({ place }: { place: Place }) {
                 {live.adat.rules.map((r) => (
                   <li
                     key={r}
-                    className="flex gap-2 text-[11px] leading-relaxed text-[#4D5D51]"
+                    className="flex gap-2 text-[11px] leading-relaxed text-[#4F5F54]"
                   >
-                    <span className="text-[#B54708]">•</span>
+                    <span className="text-[#C2410C]">•</span>
                     {r}
                   </li>
                 ))}
@@ -208,24 +208,24 @@ export default function DetailView({ place }: { place: Place }) {
           )}
 
           {live.safety && (
-            <div className="mt-6 rounded-2xl border border-[#DED7C4] bg-white p-5">
-              <h2 className="text-sm font-extrabold text-[#1F2A21]">
+            <div className="mt-6 rounded-2xl border border-[#E5DDCB] bg-white p-5">
+              <h2 className="text-sm font-extrabold text-[#17251C]">
                 {t(lang, "safety_title")}
               </h2>
               <div className="mt-2 grid gap-3 sm:grid-cols-2">
                 <div>
-                  <p className="text-[9px] font-extrabold uppercase tracking-[0.14em] text-[#9A8F7B]">
+                  <p className="text-[9px] font-extrabold uppercase tracking-[0.14em] text-[#7C6C58]">
                     {t(lang, "safety_signal")}
                   </p>
-                  <p className="mt-0.5 text-[11px] text-[#4D5D51]">
+                  <p className="mt-0.5 text-[11px] text-[#4F5F54]">
                     {live.safety.signal}
                   </p>
                 </div>
                 <div>
-                  <p className="text-[9px] font-extrabold uppercase tracking-[0.14em] text-[#9A8F7B]">
+                  <p className="text-[9px] font-extrabold uppercase tracking-[0.14em] text-[#7C6C58]">
                     {t(lang, "safety_contacts")}
                   </p>
-                  <p className="mt-0.5 text-[11px] text-[#4D5D51]">
+                  <p className="mt-0.5 text-[11px] text-[#4F5F54]">
                     {live.safety.contacts
                       .map((c) => `${c.label}: ${c.phone}`)
                       .join(" · ")}
@@ -242,7 +242,7 @@ export default function DetailView({ place }: { place: Place }) {
                   </li>
                 ))}
               </ul>
-              <p className="mt-3 text-[9px] italic text-[#9A8F7B]">
+              <p className="mt-3 text-[9px] italic text-[#7C6C58]">
                 {t(lang, "safety_disclaimer")}
               </p>
             </div>
@@ -261,15 +261,15 @@ export default function DetailView({ place }: { place: Place }) {
                 ))}
               </div>
             ) : (
-              <div className="mt-3 rounded-2xl border border-dashed border-[#DED7C4] bg-white p-5 text-center">
-                <p className="text-xs text-[#5D6F61]">
+              <div className="mt-3 rounded-2xl border border-dashed border-[#E5DDCB] bg-white p-5 text-center">
+                <p className="text-xs text-[#5B6B5F]">
                   {lang === "id"
                     ? "Belum ada penyedia terverifikasi di rute ini."
                     : "No verified providers on this route yet."}
                 </p>
                 <Link
                   href="/providers"
-                  className="mt-3 inline-block rounded-full bg-[#1F4D3A] px-4 py-2 text-[10px] font-extrabold text-white"
+                  className="mt-3 inline-block rounded-full bg-[#14532D] px-4 py-2 text-[10px] font-extrabold text-white"
                 >
                   {t(lang, "become_provider")}
                 </Link>
@@ -288,25 +288,25 @@ export default function DetailView({ place }: { place: Place }) {
 
         {/* Sidebar */}
         <aside className="lg:sticky lg:top-24 lg:self-start">
-          <div className="rounded-2xl border border-[#DED7C4] bg-white p-5 shadow-sm">
-            <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#B54708]">
+          <div className="rounded-2xl border border-[#E5DDCB] bg-white p-5 shadow-sm">
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#C2410C]">
               {t(lang, "download_pack")}
             </p>
-            <h2 className="mt-1 font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#1F2A21]">
+            <h2 className="mt-1 font-[family-name:var(--font-fraunces)] text-2xl font-semibold text-[#17251C]">
               {lang === "id" ? "Bawa rute ini offline" : "Take this route offline"}
             </h2>
             <div className="mt-4">
               <TripPackButton place={live} />
             </div>
-            <div className="mt-4 grid grid-cols-2 gap-2 border-t border-[#EDE7D8] pt-3 text-[10px] text-[#5D6F61]">
+            <div className="mt-4 grid grid-cols-2 gap-2 border-t border-[#F1EADD] pt-3 text-[10px] text-[#5B6B5F]">
               <div>
-                <span className="block font-extrabold text-[#1F2A21]">
+                <span className="block font-extrabold text-[#17251C]">
                   {live.lastFieldCheck ?? "—"}
                 </span>
                 {lang === "id" ? "Cek terakhir" : "Last field check"}
               </div>
               <div>
-                <span className="block font-extrabold text-[#1F2A21]">
+                <span className="block font-extrabold text-[#17251C]">
                   {live.verified ? t(lang, "verified") : t(lang, "data_awal")}
                 </span>
                 {lang === "id" ? "Status data" : "Data status"}
@@ -314,31 +314,31 @@ export default function DetailView({ place }: { place: Place }) {
             </div>
           </div>
 
-          <div className="mt-4 rounded-2xl border border-[#DED7C4] bg-[#F1EBDA] p-5">
-            <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#5D6F61]">
+          <div className="mt-4 rounded-2xl border border-[#E5DDCB] bg-[#F3EEE2] p-5">
+            <p className="text-[10px] font-extrabold uppercase tracking-[0.18em] text-[#5B6B5F]">
               {lang === "id" ? "Rencana perjalanan" : "Trip plan"}
             </p>
             <div className="mt-3 flex items-center justify-between text-xs">
-              <span className="text-[#5D6F61]">{t(lang, "stat_distance")}</span>
-              <span className="font-extrabold text-[#1F2A21]">
+              <span className="text-[#5B6B5F]">{t(lang, "stat_distance")}</span>
+              <span className="font-extrabold text-[#17251C]">
                 {live.distance} km
               </span>
             </div>
             <div className="mt-2 flex items-center justify-between text-xs">
-              <span className="text-[#5D6F61]">{t(lang, "stat_time")}</span>
-              <span className="font-extrabold text-[#1F2A21]">
+              <span className="text-[#5B6B5F]">{t(lang, "stat_time")}</span>
+              <span className="font-extrabold text-[#17251C]">
                 {formatEstTime(lang, live.estTime)}
               </span>
             </div>
             <div className="mt-2 flex items-center justify-between text-xs">
-              <span className="text-[#5D6F61]">{t(lang, "need_guide")}</span>
-              <span className="font-extrabold text-[#1F2A21]">
+              <span className="text-[#5B6B5F]">{t(lang, "need_guide")}</span>
+              <span className="font-extrabold text-[#17251C]">
                 {live.difficulty === "Easy" ? "—" : "✓"}
               </span>
             </div>
             <button
               onClick={handleStart}
-              className="mt-4 w-full rounded-xl bg-[#B54708] py-3 text-xs font-extrabold text-white hover:bg-[#93370D]"
+              className="mt-4 w-full rounded-xl bg-[#14532D] py-3 text-xs font-extrabold text-white hover:bg-[#1B6B3A]"
             >
               {t(lang, "start_expedition")} →
             </button>
@@ -347,20 +347,20 @@ export default function DetailView({ place }: { place: Place }) {
       </div>
 
       {/* Bottom action bar */}
-      <div className="sticky bottom-[57px] z-30 border-t border-[#DED7C4] bg-[#FBFAF6]/95 backdrop-blur md:bottom-0">
+      <div className="sticky bottom-[57px] z-30 border-t border-[#E5DDCB] bg-[#FCFAF5]/95 backdrop-blur md:bottom-0">
         <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3 sm:px-6">
           <div className="hidden sm:block">
-            <div className="text-base font-extrabold text-[#1F2A21]">
+            <div className="text-base font-extrabold text-[#17251C]">
               ★ {live.rating.toFixed(1)}
             </div>
-            <div className="text-[10px] text-[#5D6F61]">{t(lang, "rating")}</div>
+            <div className="text-[10px] text-[#5B6B5F]">{t(lang, "rating")}</div>
           </div>
           <div className="flex-1">
             <TripPackButton place={live} compact />
           </div>
           <button
             onClick={handleStart}
-            className="flex-1 rounded-xl bg-[#1F4D3A] py-3 text-xs font-extrabold text-white hover:bg-[#2F7D4F]"
+            className="flex-1 rounded-xl bg-[#14532D] py-3 text-xs font-extrabold text-white hover:bg-[#1B6B3A]"
           >
             {t(lang, "start_expedition")}
           </button>
@@ -375,10 +375,10 @@ export default function DetailView({ place }: { place: Place }) {
 function SectionTitle({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div>
-      <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#B54708]">
+      <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#C2410C]">
         {eyebrow}
       </p>
-      <h2 className="mt-1 font-[family-name:var(--font-fraunces)] text-2xl font-semibold tracking-tight text-[#1F2A21]">
+      <h2 className="mt-1 font-[family-name:var(--font-fraunces)] text-2xl font-semibold tracking-tight text-[#17251C]">
         {title}
       </h2>
     </div>
@@ -387,11 +387,11 @@ function SectionTitle({ eyebrow, title }: { eyebrow: string; title: string }) {
 
 function Fact({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-xl border border-[#DED7C4] bg-white px-3 py-3">
-      <div className="text-[9px] font-extrabold uppercase tracking-[0.12em] text-[#9A8F7B]">
+    <div className="rounded-xl border border-[#E5DDCB] bg-white px-3 py-3">
+      <div className="text-[9px] font-extrabold uppercase tracking-[0.12em] text-[#7C6C58]">
         {label}
       </div>
-      <div className="mt-1 text-sm font-extrabold text-[#1F2A21]">{value}</div>
+      <div className="mt-1 text-sm font-extrabold text-[#17251C]">{value}</div>
     </div>
   );
 }
