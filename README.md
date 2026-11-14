@@ -11,6 +11,17 @@ npm run dev
 
 Buka http://localhost:3000.
 
+## Deploy (Firebase Hosting)
+
+Produksi: **https://yakjak-fc2ca.web.app**
+
+```bash
+npm run build:static
+npx firebase-tools deploy --only hosting --project yakjak-fc2ca
+```
+
+`build:static` memakai `output: "export"` dan `NEXT_PUBLIC_SITE_URL=https://yakjak-fc2ca.web.app`. Untuk server/Vercel gunakan `npm run build` biasa.
+
 ## Demo tanpa daftar
 
 Klik **Coba demo** di navbar, lalu pilih salah satu peran:
@@ -42,7 +53,7 @@ Next.js 16 (App Router) · React 19 · Tailwind 4 · Leaflet · Firebase Auth/Fi
 
 - Web config: `.env.local` (gitignored; template di `.env.example`).
 - Rules: `firebase.json` + `firestore.rules`, deploy dengan `npx firebase-tools deploy --only firestore:rules`.
-- Auth aktif: Email/Password dan Google. Tambahkan domain produksi ke **Authentication → Settings → Authorized domains** sebelum deploy.
+- Auth aktif: Email/Password dan Google. Domain `yakjak-fc2ca.web.app` sudah ada di **Authentication → Settings → Authorized domains**.
 - Katalog destinasi tetap memakai seed lokal di `src/lib/places.ts`; Firestore dipakai untuk favorit, ulasan, dan riwayat pengguna.
 
 ## Catatan data
@@ -52,7 +63,6 @@ Katalog destinasi, penyedia, dan layanan berada di `src/lib/places.ts` dan `src/
 ## Verifikasi
 
 ```bash
-npx tsc --noEmit
-npm run lint
-npm run build
+npm run check
+npm run build:static
 ```

@@ -81,7 +81,7 @@ export default function RootLayout({
             <PlacesProvider>
               <ServiceWorkerRegister />
               <Navbar />
-              <main className="mx-auto w-full max-w-7xl flex-1 px-4 pb-28 pt-6 sm:px-6 md:pb-16">
+              <main className="mx-auto w-full max-w-7xl flex-1 px-4 pb-28 pt-6 sm:px-6 lg:pb-16">
                 {children}
               </main>
               <footer className="hidden border-t border-[#E5DDCB] bg-[#F3EEE2] md:block">

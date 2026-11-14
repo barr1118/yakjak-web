@@ -4,6 +4,8 @@ import { providers } from "@/lib/seed";
 
 import { siteUrl } from "@/lib/site";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = ["", "/providers", "/trips", "/map", "/profile"].map(
     (path) => ({

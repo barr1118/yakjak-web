@@ -51,7 +51,7 @@ export default function Navbar() {
             </span>
           </Link>
 
-          <nav className="ml-4 hidden items-center gap-1 md:flex">
+          <nav className="ml-4 hidden items-center gap-1 lg:flex">
             {NAV.map(({ href, key, icon: Icon }) => (
               <Link
                 key={href}
@@ -162,7 +162,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-[#E5DDCB] bg-[#FAF7EF]/96 backdrop-blur-xl md:hidden">
+      <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-[#E5DDCB] bg-[#FAF7EF]/96 backdrop-blur-xl lg:hidden">
         <div className="grid grid-cols-4">
           {NAV.map(({ href, key, icon: Icon }) => {
             const active = isActive(pathname, href);
