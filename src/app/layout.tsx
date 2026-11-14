@@ -7,6 +7,7 @@ import { AuthProvider } from "@/lib/auth";
 import { PlacesProvider } from "@/lib/places-context";
 import ServiceWorkerRegister from "@/components/ServiceWorkerRegister";
 import Navbar from "@/components/Navbar";
+import { siteUrl } from "@/lib/site";
 
 const lexend = Lexend({
   subsets: ["latin"],
@@ -21,9 +22,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
-  ),
+  metadataBase: new URL(siteUrl),
   title: "YakJak — Ekoturisme Komunitas Aceh",
   description:
     "Temukan hidden gems Aceh dengan rute terverifikasi, peta offline, pemandu lokal, dan aturan adat yang dihormati.",

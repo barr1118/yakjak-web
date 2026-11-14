@@ -2,12 +2,12 @@ import type { MetadataRoute } from "next";
 import { places } from "@/lib/places";
 import { providers } from "@/lib/seed";
 
-const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = ["", "/providers", "/trips", "/map", "/profile"].map(
     (path) => ({
-      url: `${base}${path}`,
+      url: `${siteUrl}${path}`,
       lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: path === "" ? 1 : 0.7,
@@ -15,14 +15,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   );
 
   const placePages = places.map((place) => ({
-    url: `${base}/place/${place.slug}`,
+    url: `${siteUrl}/place/${place.slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));
 
   const providerPages = providers.map((provider) => ({
-    url: `${base}/providers/${provider.id}`,
+    url: `${siteUrl}/providers/${provider.id}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.6,
