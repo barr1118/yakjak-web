@@ -66,3 +66,7 @@ Katalog destinasi, penyedia, dan layanan berada di `src/lib/places.ts` dan `src/
 npm run check
 npm run build:static
 ```
+
+## Foto
+
+Sumber dan lisensi foto destinasi ada di [IMAGE_CREDITS.md](IMAGE_CREDITS.md).

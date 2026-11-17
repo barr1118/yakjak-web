@@ -35,6 +35,8 @@ export interface Place {
   name: string;
   slug: string;
   image: string;
+  imageCredit?: string;
+  imageLicense?: string;
   descriptionKey: string;
   lat: number;
   lng: number;

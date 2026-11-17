@@ -131,6 +131,12 @@ export default function DetailView({ place }: { place: Place }) {
           <p className="mt-3 text-sm leading-relaxed text-[#4F5F54]">
             {t(lang, live.descriptionKey)}
           </p>
+          {live.imageCredit && (
+            <p className="mt-2 text-[10px] leading-relaxed text-[#7C6C58]">
+              Foto: {live.imageCredit}
+              {live.imageLicense ? ` · ${live.imageLicense}` : ""}
+            </p>
+          )}
 
           <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
             <Fact label={t(lang, "stat_distance")} value={`${live.distance} km`} />
